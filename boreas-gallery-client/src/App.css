@@ -1,0 +1,172 @@
+#root {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  padding-top: 2rem;
+  /* text-align: center; */
+}
+
+.app-height-container {
+  min-height: 100vh;
+}
+
+/* ------------------------------------------------------------------ */
+
+/* General Styling */
+
+/* Body */
+
+.body-container {
+  width: 95vw;
+  text-align: start;
+  margin: 0 auto;
+}
+
+/* Font */
+
+.text-white {
+  color: white;
+}
+
+.text-xs {
+  font-size: 12px;
+}
+
+.text-s {
+  font-size: 14px;
+  line-height: normal;
+}
+
+/* Icons */
+
+.icon {
+  padding: 0px 5px;
+}
+
+/* Links */
+
+.link-black {
+  color: black;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link-white {
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link-orange {
+  color: #FF5C00;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.link-margin {
+  margin-right: 35px;
+}
+
+/* Forms */
+
+.form-label {
+  padding-left: 10px;
+}
+
+.form-input {
+  width: 300px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.form-input:focus{
+  outline: none
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-button {
+  width: fit-content;
+  padding: 0px 15px;
+  height: 40px;
+  background-color: #929292;
+  border: 1px solid black;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------ */
+
+/* Header */
+
+.header-container {
+  width: 95vw;
+  text-align: start;
+  margin: 0 auto;
+}
+
+.header-links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.margin-topbottom {
+  margin: 15px 0px 20px 0px;
+}
+
+.links-container-left {
+  text-align: start;
+}
+
+.links-container-right {
+  text-align: end;
+}
+
+/* ------------------------------------------------------------------ */
+
+/* Footer */
+
+.footer-container {
+  width: 100vw;
+  text-align: start;
+  margin: 0 auto;
+  background-color: black;
+}
+
+.footer-inner-container {
+  width: 95vw;
+  margin: 0 auto;
+}
+
+.footer-links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer-container-left {
+  text-align: start;
+}
+
+.footer-container-right {
+  text-align: end;
+  align-self:last baseline;
+}
+
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
+/* Log in - Sign up */
+
+.login-container {
+  width: fit-content;
+  margin: 0 auto;
+}
