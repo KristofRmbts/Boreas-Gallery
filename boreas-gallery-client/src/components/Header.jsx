@@ -23,7 +23,7 @@ function Header() {
             </div>
             <div className="links-container-right">
                 <Link to="/about" className="link-black link-margin"> About us </Link>
-                <Link to="/follow" className="link-orange"> Follow </Link>
+                <a href="https://www.instagram.com/boreasgallery/" target="_blank" rel="noreferrer" className="link-orange"> Follow </a>
             </div>
         </nav>
         <hr />    

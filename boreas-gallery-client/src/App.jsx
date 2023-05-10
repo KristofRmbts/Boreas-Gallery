@@ -3,6 +3,13 @@ import { Routes, Route } from "react-router-dom"
 
 // Pages
 import HomePage from './pages/HomePage'
+
+import ExhibitionsPage from './pages/ExhibitionsPage'
+import ArtistsPage from './pages/ArtistsPage'
+import ShopPage from './pages/ShopPage'
+import AboutPage from './pages/AboutPage'
+import TakePartPage from './pages/TakePartPage'
+import ContactPage from './pages/ContactPage'
 import SignupPage from './pages/SignupPage'
 import LoginPage from './pages/LoginPage'
 
@@ -21,7 +28,13 @@ function App() {
       <div className='app-height-container'>
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />                    
+          <Route path="/" element={<HomePage />} />
+          <Route path="/exhibitions" element={<ExhibitionsPage />} />
+          <Route path="/artists" element={<ArtistsPage />} />
+          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/takepart" element={<TakePartPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/signup" element={ <IsAnon> <SignupPage /> </IsAnon> } /> 
           <Route path="/login" element={ <IsAnon> <LoginPage /> </IsAnon> } />
         </Routes>
