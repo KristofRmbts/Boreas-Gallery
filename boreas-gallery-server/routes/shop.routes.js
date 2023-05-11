@@ -6,11 +6,11 @@ const Item = require("../models/Item.model")
 
 // POST /shop - Creates a new item
 router.post("/shop", (req, res) => {
-    const { name, description, price, size, border, image } = req.body
+    const { title, exhibition, description, price, size, material, border, image } = req.body
 
-    Item.create({ name, description, price, size, border, image, order: [] })
+    Item.create({ title, exhibition, description, price, size, material, border, image, order: [] })
     .then(response => res.json(response))
-    .catch(err => res.json(err))
+    .catch(err => console.log(err))
 })
 
 // GET /shop - Retrieves all of the items
@@ -33,12 +33,12 @@ router.get("/shop/:itemId", (req, res) => {
 
     Item.findById(itemId)
     // .populate("order")
-    .then(project => res.status(200).json(project))
+    .then(item => res.status(200).json(item))
     .catch(err => res.json(err))
 })
 
-// PUT /shop/:itemId - Updates a specific project by Id
-router.put("/shop/:itemId", (req, res) => {
+// PUT /shop/:itemId/edit - Updates a specific project by Id
+router.put("/shop/:itemId/edit", (req, res) => {
     const { itemId } = req.params
 
     // Check if Id is valid
@@ -48,7 +48,7 @@ router.put("/shop/:itemId", (req, res) => {
     }
 
     Item.findByIdAndUpdate(itemId, req.body, { new: true })
-    .then(updatedProject => res.json(updatedProject))
+    .then(updatedItem => res.json(updatedItem))
     .catch(err => res.json(err))
 })
 

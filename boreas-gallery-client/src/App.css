@@ -36,6 +36,10 @@
   line-height: normal;
 }
 
+.justify-text {
+  text-align: justify;
+}
+
 /* Icons */
 
 .icon {
@@ -78,6 +82,20 @@
   background-color: white;
   border: 1px solid black;
   text-align: center;
+}
+
+.form-select {
+  width: 300px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: none;
+  text-align: center;
+}
+
+.form-input-textarea {
+  width: 300px;
+  height: 168px;
 }
 
 .form-input:focus{
@@ -169,4 +187,77 @@ input:-webkit-autofill:active {
 .login-container {
   width: fit-content;
   margin: 0 auto;
+}
+
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
+/* Shop - Add item */
+
+.form-outer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.form-container {
+  width: 30vw;
+}
+
+/* Shop - show items */
+
+.items-list-container {
+  display: flex;
+  flex: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.shop-item-title {
+  font-size: 22px;
+  color: black;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  inline-size: 250px;
+  overflow-wrap: break-all; 
+}
+
+.shop-item-info {
+  margin: 0;
+}
+
+.item-card {
+  margin-bottom: 50px;
+}
+
+/* Shop - Item Details page */
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.item-container-left {
+  text-align: start;
+  max-width: 40vw;
+}
+
+.item-container-right {
+  text-align: end;
+  max-width: 40vw;
+}
+
+.item-image {
+  width: 40vw;
+}
+
+.item-title {
+  font-size: 22px;
+  color: black;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
 }

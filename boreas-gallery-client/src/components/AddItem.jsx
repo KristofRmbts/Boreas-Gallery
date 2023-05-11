@@ -4,28 +4,32 @@ import axios from "axios";
 const API_URL = "http://localhost:5005";
  
 function AddItem(props) {
-  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
+  const [exhibition, setExhibition] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
-  const [size, setSize] = useState("8x12");
-  const [border, setBorder] = useState("No border");
+  const [size, setSize] = useState([]);
+  const [material, setMaterial] = useState("");
+  const [border, setBorder] = useState([]);
   const [image, setImage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
  
-    const requestBody = { name, description, price, size, border, image };
+    const requestBody = { title, exhibition, description, price, size, material, border, image };
     const storedToken = localStorage.getItem("authToken");
 
     axios
       .post(`${API_URL}/shop`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
         // Reset the state
-        setName("");
+        setTitle("");
+        setExhibition("");
         setDescription("");
         setPrice(0);
-        setSize("8x12");
-        setBorder("No border");
+        setSize([]);
+        setMaterial("");
+        setBorder([]);
         setImage("")
 
         props.refreshItems();
@@ -34,17 +38,28 @@ function AddItem(props) {
   };
  
   return (
-    <div className="AddProject">
+    <div className="shop-add-container">
       <h3>Add Item</h3>
- 
-      <div className="form-container">
+
         <form onSubmit={handleSubmit}>
-            <label className="form-label">Name</label><br />
+        <div className="form-outer-container">
+        <div className="form-container">
+            <label className="form-label">Title</label><br />
             <input
             type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            name="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="form-input"
+            />
+            <br /><br />
+
+            <label className="form-label">Exhibition name</label><br />
+            <input
+            type="text"
+            name="exhibition"
+            value={exhibition}
+            onChange={(e) => setExhibition(e.target.value)}
             className="form-input"
             />
             <br /><br />
@@ -52,15 +67,16 @@ function AddItem(props) {
             <label className="form-label">Description</label><br />
             <textarea
             type="textarea"
+            style={{resize:"none"}}
             name="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="form-input"
+            className="form-input form-input-textarea"
             />
             <br /><br />
 
             <label className="form-label">Price</label><br />
-            <textarea
+            <input
             type="number"
             name="price"
             value={price}
@@ -68,9 +84,11 @@ function AddItem(props) {
             className="form-input"
             />
             <br /><br />
+            </div>
 
+            <div className="form-container">
             <label className="form-label">Size</label><br />
-            <textarea
+            <input
             type="text"
             name="size"
             value={size}
@@ -79,18 +97,32 @@ function AddItem(props) {
             />
             <br /><br />
 
-            <label className="form-label">Border</label><br />
-            <textarea
+            <div className="form-container">
+            <label className="form-label">Material</label><br />
+            <input
             type="text"
-            name="border"
-            value={border}
-            onChange={(e) => setBorder(e.target.value)}
+            name="material"
+            value={material}
+            onChange={(e) => setMaterial(e.target.value)}
             className="form-input"
             />
             <br /><br />
 
+            <label className="form-label">Border</label><br />
+            <select 
+                // value={border}
+                name="border"
+                onChange={(e) => setBorder(e.target.value)}
+                className="form-input"
+                multiple
+            >
+            <option value="No border">No border</option>
+            <option value="Border">Border</option>
+            </select> 
+            <br /><br />
+
             <label className="form-label">Image</label><br />
-            <textarea
+            <input
             type="text"
             name="image"
             value={image}
@@ -98,10 +130,11 @@ function AddItem(props) {
             className="form-input"
             />
             <br /><br />
-
-            <button type="submit" className="form-button">Save</button>
-        </form>
+            </div>
         </div>
+        </div>
+        <button type="submit" className="form-button">Save</button>
+        </form>
     </div>
   );
 }

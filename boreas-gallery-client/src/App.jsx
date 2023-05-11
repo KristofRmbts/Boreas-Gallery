@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import ExhibitionsPage from './pages/ExhibitionsPage'
 import ArtistsPage from './pages/ArtistsPage'
 import ShopPage from './pages/Shop/ShopPage'
+import ItemDetailsPage from './pages/Shop/ItemDetailsPage'
 import AboutPage from './pages/AboutPage'
 import TakePartPage from './pages/TakePartPage'
 import ContactPage from './pages/ContactPage'
@@ -30,7 +31,10 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/exhibitions" element={<ExhibitionsPage />} />
           <Route path="/artists" element={<ArtistsPage />} />
+
           <Route path="/shop" element={<ShopPage />} />
+          <Route path="/shop/:itemId" element={<ItemDetailsPage />} />
+
           <Route path="/about" element={<AboutPage />} />
           <Route path="/takepart" element={<TakePartPage />} />
           <Route path="/contact" element={<ContactPage />} />
