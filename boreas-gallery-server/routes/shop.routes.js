@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 
 const Item = require("../models/Item.model")
 
-// POST /api/projects - Creates a new project
+// POST /shop - Creates a new item
 router.post("/shop", (req, res) => {
     const { name, description, price, size, border, image } = req.body
 
@@ -13,16 +13,16 @@ router.post("/shop", (req, res) => {
     .catch(err => res.json(err))
 })
 
-// GET /api/projects - Retrieves all of the projects
+// GET /shop - Retrieves all of the items
 router.get("/shop", (req, res) => {
     Item.find()
-    .populate("order")
+    // .populate("order")
     .then(allItems => res.json(allItems))
     .catch(err => res.json(err))
 })
 
-// GET /api/projects/:projectId = Retrieves a specific project by Id
-router.get("/shop/:item", (req, res) => {
+// GET /shop/:itemId = Retrieves a specific project by Id
+router.get("/shop/:itemId", (req, res) => {
     const { itemId } = req.params
 
     // Check if Id is valid
@@ -32,13 +32,13 @@ router.get("/shop/:item", (req, res) => {
     }
 
     Item.findById(itemId)
-    .populate("order")
+    // .populate("order")
     .then(project => res.status(200).json(project))
     .catch(err => res.json(err))
 })
 
-// PUT /api/projects/:projectId - Updates a specific project by Id
-router.put("/shop/:item", (req, res) => {
+// PUT /shop/:itemId - Updates a specific project by Id
+router.put("/shop/:itemId", (req, res) => {
     const { itemId } = req.params
 
     // Check if Id is valid
@@ -52,8 +52,8 @@ router.put("/shop/:item", (req, res) => {
     .catch(err => res.json(err))
 })
 
-//  DELETE /api/projects/:projectId - Deletes a specific project by Id
-router.delete("/shop/:item", (req, res) => {
+//  DELETE /shop/:itemId - Deletes a specific project by Id
+router.delete("/shop/:itemId", (req, res) => {
     const { itemId } = req.params
 
     if(!mongoose.Types.ObjectId.isValid(itemId)) {

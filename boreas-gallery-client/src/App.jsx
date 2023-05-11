@@ -3,10 +3,9 @@ import { Routes, Route } from "react-router-dom"
 
 // Pages
 import HomePage from './pages/HomePage'
-
 import ExhibitionsPage from './pages/ExhibitionsPage'
 import ArtistsPage from './pages/ArtistsPage'
-import ShopPage from './pages/ShopPage'
+import ShopPage from './pages/Shop/ShopPage'
 import AboutPage from './pages/AboutPage'
 import TakePartPage from './pages/TakePartPage'
 import ContactPage from './pages/ContactPage'

@@ -7,7 +7,6 @@ import ArrowIcon from "../assets/icons/arrow-right.png"
 
 const API_URL = "http://localhost:5005";
 
-
 function SignupPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
