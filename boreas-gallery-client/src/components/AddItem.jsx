@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
  
 const API_URL = "http://localhost:5005";
  
@@ -11,16 +12,39 @@ function AddItem(props) {
   const [size, setSize] = useState([]);
   const [material, setMaterial] = useState("");
   const [border, setBorder] = useState([]);
-  const [image, setImage] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
+  const navigate = useNavigate();
+
+  // File upload 
+  const handleFileUpload = (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+ 
+    const uploadData = new FormData();
+ 
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+ 
+    axios
+      .post(`${API_URL}/upload`, uploadData)
+      .then(response => {
+        // console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setImageUrl(response.data.fileUrl);
+      })
+      .catch(err => console.log("Error while uploading the file: ", err));
+  };
+
+  // Form submit
   const handleSubmit = (e) => {
     e.preventDefault();
  
-    const requestBody = { title, exhibition, description, price, size, material, border, image };
+    // const requestBody = { title, exhibition, description, price, size, material, border, imageUrl };
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${API_URL}/shop`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
+      .post(`${API_URL}/shop`, { title, exhibition, description, price, size, material, border, imageUrl }, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
         // Reset the state
         setTitle("");
@@ -30,9 +54,9 @@ function AddItem(props) {
         setSize([]);
         setMaterial("");
         setBorder([]);
-        setImage("")
+        setImageUrl("")
 
-        props.refreshItems();
+        navigate('/shop');
       })
       .catch((error) => console.log(error));
   };
@@ -41,7 +65,7 @@ function AddItem(props) {
     <div className="shop-add-container">
       <h3>Add Item</h3>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="form-outer-container">
         <div className="form-container">
             <label className="form-label">Title</label><br />
@@ -111,7 +135,7 @@ function AddItem(props) {
             <label className="form-label">Border</label><br />
             <select 
                 // value={border}
-                name="border"
+                // name="border"
                 onChange={(e) => setBorder(e.target.value)}
                 className="form-input"
                 multiple
@@ -122,12 +146,11 @@ function AddItem(props) {
             <br /><br />
 
             <label className="form-label">Image</label><br />
-            <input
-            type="text"
-            name="image"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-            className="form-input"
+            <input 
+                type="file" 
+                name="imageUrl" 
+                className="form-input"
+                onChange={(e) => handleFileUpload(e)}
             />
             <br /><br />
             </div>

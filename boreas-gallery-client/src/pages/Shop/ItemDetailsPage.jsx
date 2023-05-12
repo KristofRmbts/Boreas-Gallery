@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams} from "react-router-dom";
-import testimg from "../../assets/images/print1.png"
 
 const API_URL = "http://localhost:5005";   
  
@@ -31,7 +30,7 @@ function ItemDetailsPage (props) {
         <div className="item-container">
         <div className="item-container-left">
         <br />
-        <img src={testimg} alt="Item preview" className="item-image" />
+        <img src={item.imageUrl} alt="Item preview" className="item-image" />
         <br /><br /><br /><br />
         <p className="text-s link-black">DELIVERY AND RETURNS</p>
         <p className="text-s justify-text">Orders ship promptly after printing. All domestic orders are insured and trackable. International orders are insured and optionally trackable. No returns as all prints are custom made. An email containing tracking information will be sent once the order ships.</p>

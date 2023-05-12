@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 // import { Link } from "react-router-dom";
-import AddItem from "../../components/AddItem";
+// import AddItem from "../../components/AddItem";
 import ItemCard from "../../components/ItemCard";
 
 const API_URL = "http://localhost:5005";
@@ -28,7 +28,7 @@ function ShopPage() {
       <div className="body-container">
         <h1>Shop</h1>
         <br />
-          <AddItem refreshItems={getAllItems} />
+          {/* <AddItem refreshItems={getAllItems} /> */}
         <br />
         <div className="items-list-container">
         {items.map((item) => (

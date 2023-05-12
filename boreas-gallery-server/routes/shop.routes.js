@@ -3,21 +3,37 @@ const router = express.Router()
 const mongoose = require("mongoose")
 
 const Item = require("../models/Item.model")
-
-// POST /shop - Creates a new item
-router.post("/shop", (req, res) => {
-    const { title, exhibition, description, price, size, material, border, image } = req.body
-
-    Item.create({ title, exhibition, description, price, size, material, border, image, order: [] })
-    .then(response => res.json(response))
-    .catch(err => console.log(err))
-})
+const fileUploader = require('../config/cloudinary.config')
 
 // GET /shop - Retrieves all of the items
 router.get("/shop", (req, res) => {
     Item.find()
     // .populate("order")
     .then(allItems => res.json(allItems))
+    .catch(err => res.json(err))
+})
+
+// Upload image to Cloudinary
+router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
+    // console.log("file is: ", req.file)
+   
+    if (!req.file) {
+      next(new Error("No file uploaded!"));
+      return;
+    }
+    
+    // Get the URL of the uploaded file and send it as a response.
+    // 'fileUrl' can be any name, just make sure you remember to use the same when accessing it on the frontend
+    
+    res.json({ fileUrl: req.file.path });
+  });
+
+// POST /shop - Creates a new item
+router.post("/shop", (req, res) => {
+    const { title, exhibition, description, price, size, material, border, imageUrl } = req.body
+
+    Item.create({ title, exhibition, description, price, size, material, border, imageUrl, order: [] })
+    .then(response => res.json(response))
     .catch(err => res.json(err))
 })
 

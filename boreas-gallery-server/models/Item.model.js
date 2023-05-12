@@ -34,9 +34,9 @@ const itemSchema = new Schema(
       enum: ["No border", "White border"],
       // required: [true],
     }],
-    image: {
+    imageUrl: {
         type: String,
-        // required: [true, 'Image is required.'],
+        required: [true, 'Image is required.'],
       },
     order: [
       {type: Schema.Types.ObjectId, ref: "Order"},
