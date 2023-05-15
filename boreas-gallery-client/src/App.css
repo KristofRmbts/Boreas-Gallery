@@ -205,6 +205,32 @@ input:-webkit-autofill:active {
 /* ------------------------------------------------------------------ */
 /* ------------------------------------------------------------------ */
 
+/* Exhibition */
+
+.slideshow {
+  background-image: url(./assets/backgrounds/expo-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.slideshow-img-frame {
+  border: 5px solid black;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0;
+  box-shadow: 10px 10px 20px #888888;
+}
+
+.slideshow-img {
+  border: 20px solid white;
+  max-width: 30vw;
+  max-height: 20vh;
+}
+
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
 /* Shop - Add item */
 
 .form-outer-container {
