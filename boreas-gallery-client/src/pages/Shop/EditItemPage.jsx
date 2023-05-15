@@ -1,89 +1,122 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"
  
 const API_URL = "http://localhost:5005";
  
-function AddItem(props) {
-  const [title, setTitle] = useState("");
-  const [exhibition, setExhibition] = useState("");
-  const [artist, setArtist] = useState("");
-  const [description, setDescription] = useState("");
-  const [size, setSize] = useState("");
-  const [material, setMaterial] = useState("");
-  const [border, setBorder] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+function EditItemPage(props) {
+    const [title, setTitle] = useState("");
+    const [exhibition, setExhibition] = useState("");
+    const [artist, setArtist] = useState("");
+    const [description, setDescription] = useState("");
+    const [size, setSize] = useState("");
+    const [material, setMaterial] = useState("");
+    const [border, setBorder] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
 
-  const navigate = useNavigate();
+  const { itemId } = useParams();  
+  const navigate = useNavigate(); 
 
-  // IMG File upload 
-  const handleFileUpload = (e) => {
+// IMG File upload 
+const handleFileUpload = (e) => {
     // console.log("The file to be uploaded is: ", e.target.files[0]);
- 
+     
     const uploadData = new FormData();
- 
+     
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("imageUrl", e.target.files[0]);
- 
+     
     axios
       .post(`${API_URL}/upload`, uploadData)
       .then(response => {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
         setImageUrl(response.data.fileUrl);
-      })
-      .catch(err => console.log("Error while uploading the file: ", err));
-  };
+        })
+        .catch(err => console.log("Error while uploading the file: ", err));
+};
 
-  // Size
-  const handleSizeChange = (e) => {
+// Size
+const handleSizeChange = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
     setSize(selectedOptions);
-  };
-
-  // Materials
-  const handleMaterialChange = (e) => {
+};
+    
+// Materials
+const handleMaterialChange = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
     setMaterial(selectedOptions);
-  };
-
-  // Border
-  const handleBorderChange = (e) => {
+};
+    
+// Border
+const handleBorderChange = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
     setBorder(selectedOptions);
-  };
+};
 
-  // Form submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
- 
-    // const requestBody = { title, exhibition, description, price, size, material, border, imageUrl };
+useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${API_URL}/shop`, { title, exhibition, artist, description, size, material, border, imageUrl }, { headers: { Authorization: `Bearer ${storedToken}` } })
-      .then((response) => {
-        // Reset the state
-        setTitle("");
-        setExhibition("");
-        setArtist("");
-        setDescription("");
-        setSize("");
-        setMaterial("");
-        setBorder("");
-        setImageUrl("")
-
-        navigate('/shop');
+    .get(`${API_URL}/shop/${itemId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+    .then((response) => {
+        /* 
+          We update the state with the project data coming from the response.
+          This way we set inputs to show the actual title and description of the project
+        */
+        console.log(response.data)
+        const oneItem = response.data;
+        setTitle(oneItem.title);
+        setDescription(oneItem.description);
+        setExhibition(oneItem.exhibition);
+        setArtist(oneItem.artist);
+        setSize(oneItem.size);
+        setMaterial(oneItem.material);
+        setBorder(oneItem.border);
       })
       .catch((error) => console.log(error));
-  };
+    
+    }, [itemId]);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Create an object representing the body of the PUT request
+    const requestBody = { title, exhibition, artist, description, size, material, border, imageUrl };
+    const storedToken = localStorage.getItem("authToken");
  
-  return (
+    // Make a PUT request to update the project
+    axios
+    .put(`${API_URL}/shop/${itemId}/edit`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
+      .then((response) => {
+        // Once the request is resolved successfully and the project
+        // is updated we navigate back to the details page
+        navigate(`/shop/${itemId}`)
+      });
+};
+
+// Delete item
+
+const deleteItem = () => {
+    // Make a DELETE request to delete the project
+    const storedToken = localStorage.getItem("authToken");
+
+    axios
+    .delete(`${API_URL}/shop/${itemId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+      .then(() => {
+        // Once the delete request is resolved successfully
+        // navigate back to the list of projects.
+        navigate("/shop");
+      })
+      .catch((err) => console.log(err));
+};  
+  
+return (
+    <div className="body-container">
     <div className="shop-add-container">
       <h3>Add Item</h3>
 
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <form onSubmit={handleFormSubmit} encType="multipart/form-data">
         <div className="form-outer-container">
         <div className="form-container margin-right">
             <label className="form-label">Title</label><br />
@@ -151,8 +184,8 @@ function AddItem(props) {
             className="form-select"
             multiple
             >
-            <option value="Professional paper">Professional paper</option>
-            <option value="Fine art paper">Fine art paper</option>
+            <option value="professional paper">Professional paper</option>
+            <option value="fine art paper">Fine art paper</option>
             </select>
             <br /><br />
 
@@ -164,7 +197,7 @@ function AddItem(props) {
                 multiple
             >
             <option value="No border">No border</option>
-            <option value="White border">White border</option>
+            <option value="Border">White border</option>
             </select> 
             <br /><br />
 
@@ -179,10 +212,11 @@ function AddItem(props) {
             </div>
         </div>
         </div>
-        <button type="submit" className="form-button">Save</button>
+        <button type="submit" className="form-button">Save</button><span className="text-xs">&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;</span><button onClick={deleteItem} className="form-button">Delete</button>
         </form>
+    </div>
     </div>
   );
 }
  
-export default AddItem;
+export default EditItemPage;

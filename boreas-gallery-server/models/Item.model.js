@@ -16,23 +16,24 @@ const itemSchema = new Schema(
       type: String,
       required: [true, 'Exhibition name is required.']
     },
-    price: {
-      type: Number,
-      required: [true, 'Price is required.'],
+    artist: {
+      type: String,
+      required: [true, 'Artist name is required.']
     },
     size: [{
       type: String,
       enum: ["8x12", "10x15", "12x18", "16x24"],
-      // required: [true, 'Available sizes are required.'],
+      required: [true, 'Available sizes are required.'],
     }],
     material: [{
       type: String,
-      // required: [true],
+      enum: ["Professional paper", "Fine art paper"],
+      required: [true],
     }],
     border: [{
       type: String,
       enum: ["No border", "White border"],
-      // required: [true],
+      required: [true],
     }],
     imageUrl: {
         type: String,

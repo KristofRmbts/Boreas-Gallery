@@ -7,6 +7,7 @@ import ExhibitionsPage from './pages/ExhibitionsPage'
 import ArtistsPage from './pages/ArtistsPage'
 import ShopPage from './pages/shop/ShopPage'
 import ItemDetailsPage from './pages/shop/ItemDetailsPage'
+import EditItemPage from './pages/shop/EditItemPage'
 import AboutPage from './pages/AboutPage'
 import TakePartPage from './pages/TakePartPage'
 import ContactPage from './pages/ContactPage'
@@ -21,6 +22,7 @@ import Footer from './components/Footer'
 import NoRightClick from './components/NoRightClick'
 
 import AdminPage from './pages/admin/AdminPage'
+import IsPrivate from './components/IsPrivate'
 
 function App() {
 
@@ -36,6 +38,8 @@ function App() {
 
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/shop/:itemId" element={<ItemDetailsPage />} />
+          <Route exact path="/shop/:itemId/edit" element={ <EditItemPage />} /> 
+
 
           <Route path="/about" element={<AboutPage />} />
           <Route path="/takepart" element={<TakePartPage />} />
@@ -43,7 +47,7 @@ function App() {
           <Route path="/signup" element={ <IsAnon> <SignupPage /> </IsAnon> } /> 
           <Route path="/login" element={ <IsAnon> <LoginPage /> </IsAnon> } />
 
-          <Route path="/admin" element={ <AdminPage /> } />
+          <Route path="/admin" element={ <IsPrivate><AdminPage /></IsPrivate> } />
         </Routes>
       </div>
       <Footer />

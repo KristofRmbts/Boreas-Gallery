@@ -50,7 +50,7 @@
 
 .link-black {
   color: black;
-  font-weight: 700;
+  font-family: Inter-Bold;
   text-decoration: none;
 }
 
@@ -85,8 +85,8 @@
 }
 
 .form-select {
-  width: 200px;
-  height: 50px;
+  width: 300px;
+  height: fit-content;
   background-color: white;
   border: 1px solid black;
   text-align: center;
@@ -97,6 +97,9 @@ select {
   -moz-appearance: none;
   text-indent: 1px;
   text-overflow: '';
+  border-radius: 0;
+  height: fit-content;
+  padding: 10px;
 }
 
 .form-input-textarea {
@@ -263,6 +266,10 @@ input:-webkit-autofill:active {
 .form-container {
   text-align: start;
   width: fit-content;
+}
+
+.margin-right {
+  margin-right: 50px;
 }
 
 .item-image {

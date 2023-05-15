@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import testimg from "../assets/images/print1.png"
  
 // We are deconstructing props object directly in the parentheses of the function
-function ItemCard ( { title, exhibition, price, _id, imageUrl} ) {
+function ItemCard ( { title, exhibition, artist, _id, imageUrl} ) {
   
   return (
     <div className="item-card">
@@ -12,7 +12,7 @@ function ItemCard ( { title, exhibition, price, _id, imageUrl} ) {
             <img src={imageUrl} alt="Image" width={250} />
             </Link>
             <p className="shop-item-info link-black">{exhibition} </p>
-            <p className="shop-item-info">€ {price}.00 </p>
+            <p className="shop-item-info text-s">{artist} </p>
             </div>
     </div>
   );

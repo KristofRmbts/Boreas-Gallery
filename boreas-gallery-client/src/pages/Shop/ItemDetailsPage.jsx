@@ -6,6 +6,9 @@ const API_URL = "http://localhost:5005";
  
 function ItemDetailsPage (props) {
   const [item, setItem] = useState(null);
+  const [size, setSize] = useState("");
+  const [material, setMaterial] = useState("");
+  const [border, setBorder] = useState("");
   const { itemId } = useParams();        
 
   const getItem = () => {
@@ -20,10 +23,28 @@ function ItemDetailsPage (props) {
       .catch((error) => console.log(error));
   };
 
+  // Size
+  const handleSizeChange = (e) => {
+  const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
+  setSize(selectedOptions);
+  };
+  
+  // Materials
+  const handleMaterialChange = (e) => {
+  const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
+  setMaterial(selectedOptions);
+  };
+
+  // Border
+  const handleBorderChange = (e) => {
+    const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
+    setBorder(selectedOptions);
+  };
+
   useEffect(()=> {
     getItem();
   }, []);
-  
+
   return (
     <div className="body-container">
       {item && (
@@ -39,7 +60,8 @@ function ItemDetailsPage (props) {
             <h2 className="item-title">{item.title}</h2>
             <br />
             <p className="shop-item-info link-black">DETAILS</p>
-            <p className="shop-item-info">{item.price}.00€</p>
+            <p className="shop-item-info">{item.exhibition}</p>
+            <p className="shop-item-info">by {item.artist}</p>
             <br />
             <p className="shop-item-info">{item.description}</p>
             <br />
@@ -55,13 +77,12 @@ function ItemDetailsPage (props) {
             <div className="form-container">
               <label className="form-label">Size</label><br />
               <select
-              name="border"
+              name="size"
               className="form-select"
+              onChange={handleSizeChange}
               >
               {item.size.map((size) => (
-                <>
-                  <option value={size}>{size}</option>
-                </>
+                <option value={size} key={size._id}>{size}</option>
               ))}
               </select>
               <br /><br />
@@ -70,11 +91,10 @@ function ItemDetailsPage (props) {
               <select
               name="material"
               className="form-select"
+              onChange={handleMaterialChange}
               >
               {item.material.map((material) => (
-                <>
-                  <option value={material}>{material}</option>
-                </>
+                <option value={material} key={material._id}>{material}</option>
               ))}
               </select>
               <br /><br />
@@ -83,24 +103,23 @@ function ItemDetailsPage (props) {
               <select
               name="border"
               className="form-select"
+              onChange={handleBorderChange}
               >
               {item.border.map((border) => (
-                <>
-                  <option value={border}>{border}</option>
-                </>
+                <option value={border} key={border._id}>{border}</option>
               ))}
               </select>
               <br /><br />
             </div>
             <br />
-            <button type="submit" className="form-button">Send request</button>
-          </div>
+            <a href={`mailto:request@boreasgallery.com?subject=Purchase%20request&body=Hello%20Boreas%2C%0D%0A%0D%0AI%20would%20like%20to%20enquire%20price%20and%20shipping%20information%20about%20the%20following%20print%3A%0D%0A%0D%0ATitle%3A%20${item.title}%0D%0ASize%3A%20${size}%0D%0AMaterial%3A%20${material}%0D%0ABorder%3A%20${border}%0D%0A%0D%0AThank%20you%2C%0D%0AX`}><button className="form-button">Send request</button></a>
+            </div>
         </div>
       )}
       <br /><br />
-      {/* <Link to={`/shop/${itemId}/edit`}>
+      <Link to={`/shop/${itemId}/edit`}>
         <button>Edit</button>
-      </Link>     */}
+      </Link>    
     </div>
   );
 }

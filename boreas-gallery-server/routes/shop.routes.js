@@ -30,11 +30,11 @@ router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
 
 // POST /shop - Creates a new item
 router.post("/shop", (req, res) => {
-    const { title, exhibition, description, price, size, material, border, imageUrl } = req.body
-
-    Item.create({ title, exhibition, description, price, size, material, border, imageUrl, order: [] })
-    .then(response => res.json(response))
-    .catch(err => res.json(err))
+    const { title, exhibition, artist, description, size, material, border, imageUrl } = req.body
+    console.log(req.body)
+    Item.create({ title, exhibition, artist, description, size, material, border, imageUrl })
+    .then(response => {console.log("RES: ", response); res.json(response)})
+    .catch(err => {console.log("err: ", err); res.json(err)})
 })
 
 // GET /shop/:itemId = Retrieves a specific project by Id
@@ -79,7 +79,7 @@ router.delete("/shop/:itemId", (req, res) => {
 
     // We should normally also delete the tasks for the project
 
-    Project.findByIdAndDelete(itemId)
+    Item.findByIdAndDelete(itemId)
     .then(() => {
         res.json({ message: `Item with id:${itemId} has been removed successfully`})
     })
