@@ -27,6 +27,9 @@ app.use("/auth", authRoutes)
 const shopRoutes = require("./routes/shop.routes")
 app.use("/", shopRoutes)
 
+const exhibitionRoutes = require("./routes/exhibition.routes")
+app.use("/", exhibitionRoutes)
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

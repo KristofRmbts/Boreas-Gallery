@@ -9,6 +9,10 @@
   min-height: 100vh;
 }
 
+.page-height-container {
+  min-height: 80vh;
+}
+
 /* ------------------------------------------------------------------ */
 
 /* General Styling */
@@ -56,13 +60,13 @@
 
 .link-white {
   color: white;
-  font-weight: 700;
+  font-family: Inter-Bold;
   text-decoration: none;
 }
 
 .link-orange {
   color: #FF5C00;
-  font-weight: 700;
+  font-family: Inter-Bold;
   text-decoration: none;
 }
 
@@ -205,13 +209,46 @@ input:-webkit-autofill:active {
 /* ------------------------------------------------------------------ */
 /* ------------------------------------------------------------------ */
 
-/* Exhibition */
+/* HomePage */
+
+.current-exhibition-container {
+  background-color: #929292 ;
+  padding: 20px;
+  margin: 10px 0px;
+}
+
+.current-exhibition-container > h1, h2, h3, p {
+  margin: 0;
+}
+
+.exhibition-title {
+  font-family: N27;
+  margin: 25px 0px;
+}
+
+.arrow-down {
+  transform: rotate(90deg);
+  height: 13px;
+  padding-bottom: 4px;
+}
+
+.align-right {
+  text-align: end;
+}
+
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
+/* ExhibitionsPage */
 
 .slideshow {
   background-image: url(./assets/backgrounds/expo-bg.jpg);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   width: 100%;
+  height: 75vh;
+  text-align: center;
 }
 
 .slideshow-img-frame {
@@ -222,10 +259,54 @@ input:-webkit-autofill:active {
   box-shadow: 10px 10px 20px #888888;
 }
 
-.slideshow-img {
+.slideshow-img-passpartout {
   border: 20px solid white;
+}
+
+.slideshow-img {
   max-width: 30vw;
   max-height: 20vh;
+  margin-bottom: -6px;
+}
+
+.slideshow-images.animate {
+  animation-name: fade;
+  animation-duration: 3s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.slideshow-zoom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideshow-zoom-img-frame {
+  position: relative;
+  margin: 0 auto;
+  border: 8px solid black;
+  width: fit-content;
+}
+
+.slideshow-zoom-img-passpartout {
+  border: 30px solid white;
+  height: 80vh;
+  margin-bottom: -6px;
+
 }
 
 /* ------------------------------------------------------------------ */
@@ -261,6 +342,7 @@ input:-webkit-autofill:active {
   text-decoration: none;
   inline-size: 250px;
   overflow-wrap: break-all; 
+  margin-bottom: 15px;
 }
 
 .shop-item-info {

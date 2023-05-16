@@ -8,14 +8,13 @@ const fileUploader = require('../config/cloudinary.config')
 // GET /shop - Retrieves all of the items
 router.get("/shop", (req, res) => {
     Item.find()
-    // .populate("order")
+    // .populate("")
     .then(allItems => res.json(allItems))
     .catch(err => res.json(err))
 })
 
 // Upload image to Cloudinary
 router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
-    // console.log("file is: ", req.file)
    
     if (!req.file) {
       next(new Error("No file uploaded!"));
@@ -31,10 +30,10 @@ router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
 // POST /shop - Creates a new item
 router.post("/shop", (req, res) => {
     const { title, exhibition, artist, description, size, material, border, imageUrl } = req.body
-    console.log(req.body)
+
     Item.create({ title, exhibition, artist, description, size, material, border, imageUrl })
-    .then(response => {console.log("RES: ", response); res.json(response)})
-    .catch(err => {console.log("err: ", err); res.json(err)})
+    .then(response => res.json(response))
+    .catch(err => res.json(err))
 })
 
 // GET /shop/:itemId = Retrieves a specific project by Id
@@ -48,7 +47,7 @@ router.get("/shop/:itemId", (req, res) => {
     }
 
     Item.findById(itemId)
-    // .populate("order")
+    // .populate("")
     .then(item => res.status(200).json(item))
     .catch(err => res.json(err))
 })

@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom"
 
 // Pages
 import HomePage from './pages/HomePage'
-import ExhibitionsPage from './pages/ExhibitionsPage'
+import ExhibitionsPage from './pages/exhibitions/ExhibitionsPage'
 import ArtistsPage from './pages/ArtistsPage'
 import ShopPage from './pages/shop/ShopPage'
 import ItemDetailsPage from './pages/shop/ItemDetailsPage'
@@ -34,16 +34,19 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/exhibitions" element={<ExhibitionsPage />} />
+          {/* <Route path="/exhibitions/:exhibitionId" element={<ExhibitionsPage />} />
+          <Route path="/exhibitions/:exhibitionId/edit" element={<ExhibitionsPage />} /> */}
+
           <Route path="/artists" element={<ArtistsPage />} />
 
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/shop/:itemId" element={<ItemDetailsPage />} />
           <Route exact path="/shop/:itemId/edit" element={ <EditItemPage />} /> 
 
-
           <Route path="/about" element={<AboutPage />} />
           <Route path="/takepart" element={<TakePartPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          
           <Route path="/signup" element={ <IsAnon> <SignupPage /> </IsAnon> } /> 
           <Route path="/login" element={ <IsAnon> <LoginPage /> </IsAnon> } />
 

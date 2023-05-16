@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
 const itemSchema = new Schema(
   {
     title: {
@@ -36,15 +35,11 @@ const itemSchema = new Schema(
       required: [true],
     }],
     imageUrl: {
-        type: String,
-        required: [true, 'Image is required.'],
-      },
-    order: [
-      {type: Schema.Types.ObjectId, ref: "Order"},
-    ],
+      type: String,
+      required: [true, 'Image is required.'],
+    },
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
     timestamps: true
   }
 );

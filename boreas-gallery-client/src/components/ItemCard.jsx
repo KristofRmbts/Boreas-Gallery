@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import testimg from "../assets/images/print1.png"
  
 // We are deconstructing props object directly in the parentheses of the function
 function ItemCard ( { title, exhibition, artist, _id, imageUrl} ) {
