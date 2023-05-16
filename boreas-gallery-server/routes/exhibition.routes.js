@@ -12,16 +12,6 @@ router.get("/exhibitions", (req, res) => {
     .catch(err => res.json(err))
 })
 
-// GET /exhibition - Retrieves all of the items
-router.get("/exhibitions/latest", (req, res) => {
-    Exhibition.find()
-    .then(allExhibitions => {
-        // res.json(allExhibitions)
-        res.json({latestExhibition: allExhibitions.sort((a, b) => b.createdAt - a.createdAt)[0]})
-    })
-    .catch(err => res.json(err))
-})
-
 // Upload image to Cloudinary
 router.post("/exhibitions/upload", fileUploader.array("images"), (req, res, next) => {
    
@@ -34,7 +24,6 @@ router.post("/exhibitions/upload", fileUploader.array("images"), (req, res, next
     res.json({ fileUrls });
 });
 
-
 // POST /exhibitions - Creates a new exhibition
 router.post("/exhibitions", (req, res) => {
     const { title, artist, description, subtext1, subtext2, subtext3, runningTime, images } = req.body
@@ -44,12 +33,22 @@ router.post("/exhibitions", (req, res) => {
     .catch(err => res.json(err))
 })
 
+// GET /exhibition - Retrieves latest exhibition
+router.get("/exhibitions/latest", (req, res) => {
+    Exhibition.find()
+    .then(allExhibitions => {
+        // res.json(allExhibitions)
+        res.json({latestExhibition: allExhibitions.sort((a, b) => b.createdAt - a.createdAt)[0]})
+    })
+    .catch(err => res.json(err))
+})
+
 // GET /exhibitions/:exhibitionId = Retrieves a specific project by Id
 router.get("/exhibitions/:exhibitionId", (req, res) => {
     const { exhibitionId } = req.params
 
     // Check if Id is valid
-    if(!mongoose.Types.ObjectId.isValid(itemId)) {
+    if(!mongoose.Types.ObjectId.isValid(exhibitionId)) {
         res.status(400).json({ message: "Specified id is not valid" })
         return
     }

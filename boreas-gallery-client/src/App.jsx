@@ -23,6 +23,7 @@ import NoRightClick from './components/NoRightClick'
 
 import AdminPage from './pages/admin/AdminPage'
 import IsPrivate from './components/IsPrivate'
+import EditExhibitionPage from './pages/exhibitions/EditExhibitionPage'
 
 function App() {
 
@@ -34,8 +35,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/exhibitions" element={<ExhibitionsPage />} />
-          {/* <Route path="/exhibitions/:exhibitionId" element={<ExhibitionsPage />} />
-          <Route path="/exhibitions/:exhibitionId/edit" element={<ExhibitionsPage />} /> */}
+          <Route path="/exhibitions/:exhibitionId" element={<ExhibitionsPage />} />
+          <Route path="/exhibitions/:exhibitionId/edit" element={<EditExhibitionPage />} />
 
           <Route path="/artists" element={<ArtistsPage />} />
 

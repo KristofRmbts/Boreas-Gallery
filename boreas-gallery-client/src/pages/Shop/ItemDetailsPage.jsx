@@ -50,7 +50,6 @@ function ItemDetailsPage (props) {
       {item && (
         <div className="item-container">
           <div className="item-container-left">
-          <br />
           <img src={item.imageUrl} alt="Item preview" className="item-image" />
           <br /><br /><br /><br />
           <p className="text-s link-black">DELIVERY AND RETURNS</p>

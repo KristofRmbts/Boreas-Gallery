@@ -65,7 +65,6 @@ useEffect(() => {
           We update the state with the project data coming from the response.
           This way we set inputs to show the actual title and description of the project
         */
-        console.log(response.data)
         const oneItem = response.data;
         setTitle(oneItem.title);
         setDescription(oneItem.description);
