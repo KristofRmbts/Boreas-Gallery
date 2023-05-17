@@ -24,12 +24,6 @@ function HomePage() {
     getLatestExhibitions();
   }, []);
 
-  // function getRandomNumber(images) {
-  //   return Math.floor(Math.random() * images.length);
-  // }
-
-  // const Number = getRandomNumber(exhibition.images)
-
   if (!exhibition.images) {
     return (
     <></>
