@@ -1,4 +1,4 @@
-import AddItem from '../components/AddItem';
+import AddItem from './../components/AddItem';
 
 function AddItemPage() {
     return (

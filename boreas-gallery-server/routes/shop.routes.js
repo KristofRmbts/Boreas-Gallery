@@ -2,9 +2,9 @@ const express = require("express")
 const router = express.Router()
 const mongoose = require("mongoose")
 
-const Item = require("../models/Item.model")
-const fileUploader = require('../config/cloudinary.config')
-const { isAdmin } = require("../middleware/isAdmin.middleware")
+const Item = require("./../models/Item.model")
+const fileUploader = require('./../config/cloudinary.config')
+const { isAdmin } = require("./../middleware/isAdmin.middleware")
 
 // GET /shop - Retrieves all of the items
 router.get("/shop", (req, res) => {

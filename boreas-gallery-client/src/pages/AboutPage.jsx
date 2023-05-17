@@ -1,4 +1,4 @@
-import BB1 from '../assets/images/BB1.png'
+import BB1 from './../assets/images/BB1.png'
 
 function AboutPage() {
     return (

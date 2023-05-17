@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 
-import BB1 from "../assets/images/BB1.png"
-import BB2 from "../assets/images/BB2.png"
-import BB3 from "../assets/images/BB3.png"
+import BB1 from "./../assets/images/BB1.png"
+import BB2 from "./../assets/images/BB2.png"
+import BB3 from "./../assets/images/BB3.png"
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 

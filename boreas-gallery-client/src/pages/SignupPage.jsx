@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import authService from "./../services/auth.service";
 
-import ArrowIcon from "../assets/icons/arrow-right.png"
+import ArrowIcon from "./../assets/icons/arrow-right.png"
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 

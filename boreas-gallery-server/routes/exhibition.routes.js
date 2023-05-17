@@ -2,9 +2,9 @@ const express = require("express")
 const router = express.Router()
 const mongoose = require("mongoose")
 
-const Exhibition = require("../models/Exhibition.model")
-const fileUploader = require('../config/cloudinary.config')
-const { isAdmin } = require("../middleware/isAdmin.middleware")
+const Exhibition = require("./../models/Exhibition.model")
+const fileUploader = require('./../config/cloudinary.config')
+const { isAdmin } = require("./../middleware/isAdmin.middleware")
 
 
 // GET /exhibition - Retrieves all of the items

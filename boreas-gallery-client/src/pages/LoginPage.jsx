@@ -1,10 +1,9 @@
 import { useContext, useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
+import { AuthContext } from "./../context/auth.context";
 import authService from "./../services/auth.service";
 
-import ArrowIcon from "../assets/icons/arrow-right.png"
+import ArrowIcon from "./../assets/icons/arrow-right.png"
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
  

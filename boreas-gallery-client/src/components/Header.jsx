@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-// import { useContext } from "react";
-// import { AuthContext } from "../context/auth.context"; 
 
 // Image asserts:
-import BoreasLogoHorizontalBlack from "../assets/logos/BoreasLogo-horizontal-black.png"
+import BoreasLogoHorizontalBlack from "./../assets/logos/BoreasLogo-horizontal-black.png"
  
 function Header() {
   // const { isLoggedIn, user, logOutUser } = useContext(AuthContext); 

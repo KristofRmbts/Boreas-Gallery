@@ -1,6 +1,3 @@
-// import { Link } from "react-router-dom";
-// import AddItem from "../../components/AddItem";
-// import AddExhibition from "../../components/AddExhibition";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
