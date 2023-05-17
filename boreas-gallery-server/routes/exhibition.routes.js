@@ -5,12 +5,14 @@ const mongoose = require("mongoose")
 const Exhibition = require("../models/Exhibition.model")
 const fileUploader = require('../config/cloudinary.config')
 
+
 // GET /exhibition - Retrieves all of the items
 router.get("/exhibitions", (req, res) => {
     Exhibition.find()
     .then(allExhibitions => res.json(allExhibitions))
     .catch(err => res.json(err))
 })
+
 
 // Upload image to Cloudinary
 router.post("/exhibitions/upload", fileUploader.array("images"), (req, res, next) => {
@@ -24,6 +26,7 @@ router.post("/exhibitions/upload", fileUploader.array("images"), (req, res, next
     res.json({ fileUrls });
 });
 
+
 // POST /exhibitions - Creates a new exhibition
 router.post("/exhibitions", (req, res) => {
     const { title, artist, description, subtext1, subtext2, subtext3, runningTime, images } = req.body
@@ -32,6 +35,7 @@ router.post("/exhibitions", (req, res) => {
     .then(response => res.json(response))
     .catch(err => res.json(err))
 })
+
 
 // GET /exhibition - Retrieves latest exhibition
 router.get("/exhibitions/latest", (req, res) => {
@@ -42,6 +46,7 @@ router.get("/exhibitions/latest", (req, res) => {
     })
     .catch(err => res.json(err))
 })
+
 
 // GET /exhibitions/:exhibitionId = Retrieves a specific project by Id
 router.get("/exhibitions/:exhibitionId", (req, res) => {
@@ -58,6 +63,7 @@ router.get("/exhibitions/:exhibitionId", (req, res) => {
     .catch(err => res.json(err))
 })
 
+
 // PUT /shop/:itemId/exhibitionId - Updates a specific project by Id
 router.put("/exhibitions/:exhibitionId/edit", (req, res) => {
     const { exhibitionId } = req.params
@@ -73,6 +79,7 @@ router.put("/exhibitions/:exhibitionId/edit", (req, res) => {
     .catch(err => res.json(err))
 })
 
+
 //  DELETE /exhibitions/:exhibitionId - Deletes a specific project by Id
 router.delete("/exhibitions/:exhibitionId", (req, res) => {
     const { exhibitionId } = req.params
@@ -82,13 +89,12 @@ router.delete("/exhibitions/:exhibitionId", (req, res) => {
         return
     }
 
-    // We should normally also delete the tasks for the project
-
     Exhibition.findByIdAndDelete(exhibitionId)
     .then(() => {
         res.json({ message: `Item with id:${exhibitionId} has been removed successfully`})
     })
     .catch(err => res.json(err))
 })
+
 
 module.exports = router

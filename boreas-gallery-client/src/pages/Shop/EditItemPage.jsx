@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom"
  
 const API_URL = "http://localhost:5005";
  
-function EditItemPage(props) {
+function EditItemPage() {
     const [title, setTitle] = useState("");
     const [exhibition, setExhibition] = useState("");
     const [artist, setArtist] = useState("");
@@ -73,6 +73,7 @@ useEffect(() => {
         setSize(oneItem.size);
         setMaterial(oneItem.material);
         setBorder(oneItem.border);
+        setImageUrl(oneItem.imageUrl);
       })
       .catch((error) => console.log(error));
     

@@ -13,6 +13,7 @@ router.get("/shop", (req, res) => {
     .catch(err => res.json(err))
 })
 
+
 // Upload image to Cloudinary
 router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
    
@@ -27,6 +28,7 @@ router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
     res.json({ fileUrl: req.file.path });
   });
 
+
 // POST /shop - Creates a new item
 router.post("/shop", (req, res) => {
     const { title, exhibition, artist, description, size, material, border, imageUrl } = req.body
@@ -35,6 +37,7 @@ router.post("/shop", (req, res) => {
     .then(response => res.json(response))
     .catch(err => res.json(err))
 })
+
 
 // GET /shop/:itemId = Retrieves a specific project by Id
 router.get("/shop/:itemId", (req, res) => {
@@ -52,6 +55,7 @@ router.get("/shop/:itemId", (req, res) => {
     .catch(err => res.json(err))
 })
 
+
 // PUT /shop/:itemId/edit - Updates a specific project by Id
 router.put("/shop/:itemId/edit", (req, res) => {
     const { itemId } = req.params
@@ -67,6 +71,7 @@ router.put("/shop/:itemId/edit", (req, res) => {
     .catch(err => res.json(err))
 })
 
+
 //  DELETE /shop/:itemId - Deletes a specific project by Id
 router.delete("/shop/:itemId", (req, res) => {
     const { itemId } = req.params
@@ -75,8 +80,6 @@ router.delete("/shop/:itemId", (req, res) => {
         res.status(400).json({ message: "Specified id is not valid" })
         return
     }
-
-    // We should normally also delete the tasks for the project
 
     Item.findByIdAndDelete(itemId)
     .then(() => {

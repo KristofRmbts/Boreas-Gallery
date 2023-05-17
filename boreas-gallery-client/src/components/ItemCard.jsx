@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
  
-// We are deconstructing props object directly in the parentheses of the function
 function ItemCard ( { title, exhibition, artist, _id, imageUrl} ) {
   
   return (

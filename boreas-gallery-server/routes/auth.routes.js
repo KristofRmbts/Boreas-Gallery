@@ -8,8 +8,8 @@ const { isAuthenticated } = require("../middleware/jwt.middleware")
 const User = require("../models/User.model")
 const saltRounds = 10
 
-// POST /auth/signup - Creates a new user in the database
 
+// POST /auth/signup - Creates a new user in the database
 router.post("/signup", (req, res) => {
   const { email, password } = req.body
 
@@ -57,8 +57,8 @@ router.post("/signup", (req, res) => {
     })
 });
 
-// POST /auth/login - Verifies email and password and returns a JWT
 
+// POST /auth/login - Verifies email and password and returns a JWT
 router.post("/login", (req, res) => {
   const { email, password } = req.body
 
@@ -77,9 +77,9 @@ router.post("/login", (req, res) => {
       const passwordCorrect = bcrypt.compareSync(password, foundUser.password)
 
       if (passwordCorrect) {
-        const { _id, email } = foundUser
+        const { _id, email, role } = foundUser
 
-        const payload = { _id, email }
+        const payload = { _id, email, role }
 
         // Create and sign the token
         const authToken = jwt.sign(
@@ -95,6 +95,7 @@ router.post("/login", (req, res) => {
     })
     .catch(err => res.status(500).json({ message: "Internal Server Error" }))
 })
+
 
 // GET /auth/verify - Used to verify JWT stored on the client
 router.get("/verify", isAuthenticated, (req, res) => {

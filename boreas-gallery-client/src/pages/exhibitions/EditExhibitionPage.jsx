@@ -54,14 +54,15 @@ function EditExhibitionPage(props) {
       .get(`${API_URL}/exhibitions/${exhibitionId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
         // Reset the state
-        const oneItem = response.data;
-        setTitle(oneItem.title);
-        setArtist(oneItem.artist);
-        setDescription(oneItem.description);
-        setRunningTime(oneItem.runningTime);
-        setSubtext1(oneItem.subtext1);
-        setSubtext2(oneItem.subtext2);
-        setSubtext3(oneItem.subtext3);
+        const oneExhibition = response.data;
+        setTitle(oneExhibition.title);
+        setArtist(oneExhibition.artist);
+        setDescription(oneExhibition.description);
+        setRunningTime(oneExhibition.runningTime);
+        setSubtext1(oneExhibition.subtext1);
+        setSubtext2(oneExhibition.subtext2);
+        setSubtext3(oneExhibition.subtext3);
+        setImages(oneExhibition.images)
       })
       .catch((error) => console.log(error));
     }, [exhibitionId]);

@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom"
 // Pages
 import HomePage from './pages/HomePage'
 import ExhibitionsPage from './pages/exhibitions/ExhibitionsPage'
+import EditExhibitionPage from './pages/exhibitions/EditExhibitionPage'
+import ExhibitionDetailPage from './pages/exhibitions/ExhibitionDetailPage'
 import ArtistsPage from './pages/ArtistsPage'
 import ShopPage from './pages/shop/ShopPage'
 import ItemDetailsPage from './pages/shop/ItemDetailsPage'
@@ -23,7 +25,6 @@ import NoRightClick from './components/NoRightClick'
 
 import AdminPage from './pages/admin/AdminPage'
 import IsPrivate from './components/IsPrivate'
-import EditExhibitionPage from './pages/exhibitions/EditExhibitionPage'
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/exhibitions" element={<ExhibitionsPage />} />
-          <Route path="/exhibitions/:exhibitionId" element={<ExhibitionsPage />} />
+          <Route path="/exhibitions/:exhibitionId" element={<ExhibitionDetailPage />} />
           <Route path="/exhibitions/:exhibitionId/edit" element={<EditExhibitionPage />} />
 
           <Route path="/artists" element={<ArtistsPage />} />

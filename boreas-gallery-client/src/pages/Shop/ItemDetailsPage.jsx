@@ -116,9 +116,6 @@ function ItemDetailsPage (props) {
         </div>
       )}
       <br /><br />
-      <Link to={`/shop/${itemId}/edit`}>
-        <button>Edit</button>
-      </Link>    
     </div>
   );
 }

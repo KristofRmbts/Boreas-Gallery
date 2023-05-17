@@ -45,10 +45,21 @@
   text-align: justify;
 }
 
-/* Icons */
+/* Icons and Buttons */
 
 .icon {
   padding: 0px 5px;
+}
+
+.small-button {
+  width: fit-content;
+  padding: 5px;
+  background-color: #929292;
+  border: 1px solid black;
+  text-align: center;
+  color: white;
+  font-family: Inter-Bold;
+  font-size: 10px;
 }
 
 /* Links */
@@ -135,7 +146,7 @@ input:-webkit-autofill:active {
   border: 1px solid black;
   text-align: center;
   color: white;
-  font-weight: 700;
+  font-family: Inter-Bold;
 }
 
 /* ------------------------------------------------------------------ */
@@ -210,7 +221,33 @@ input:-webkit-autofill:active {
 /* ------------------------------------------------------------------ */
 /* ------------------------------------------------------------------ */
 
-/* HomePage */
+/* Admin Portal */
+
+.admin-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.admin-inner-container {
+  text-align: start;
+  width: 33vw;
+}
+
+.border {
+  border: 1px solid black;
+  padding: 25px;
+}
+
+.admin-links {
+  text-decoration: none;
+  color: black;
+}
+
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
+/* ExhibitionsPage */
 
 .current-exhibition-container {
   background-color: #929292 ;
@@ -236,11 +273,6 @@ input:-webkit-autofill:active {
 .align-right {
   text-align: end;
 }
-
-/* ------------------------------------------------------------------ */
-/* ------------------------------------------------------------------ */
-
-/* ExhibitionsPage */
 
 .slideshow {
   background-image: url(./assets/backgrounds/expo-bg.jpg);
