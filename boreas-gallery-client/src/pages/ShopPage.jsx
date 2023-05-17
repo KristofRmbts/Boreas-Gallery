@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import ItemCard from "../../components/ItemCard";
+import ItemCard from "../components/ItemCard";
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 

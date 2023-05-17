@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import ExhibitionDetails from '../../components/ExhibitionDetails';
+import ExhibitionDetails from '../components/ExhibitionDetails';
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 

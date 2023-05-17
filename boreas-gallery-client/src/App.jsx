@@ -3,15 +3,15 @@ import { Routes, Route } from "react-router-dom"
 
 // Pages
 import HomePage from './pages/HomePage'
-import ExhibitionsPage from './pages/exhibitions/ExhibitionsPage'
-import AddExhibitionPage from './pages/exhibitions/AddExhibitionPage'
-import EditExhibitionPage from './pages/exhibitions/EditExhibitionPage'
-import ExhibitionDetailPage from './pages/exhibitions/ExhibitionDetailPage'
+import ExhibitionsPage from './pages/ExhibitionsPage'
+import AddExhibitionPage from './pages/AddExhibitionPage'
+import EditExhibitionPage from './pages/EditExhibitionPage'
+import ExhibitionDetailPage from './pages/ExhibitionDetailPage'
 import ArtistsPage from './pages/ArtistsPage'
-// import ShopPage from './pages/shop/ShopPage'
-import AddItemPage from './pages/shop/AddItemPage'
-import ItemDetailsPage from './pages/shop/ItemDetailsPage'
-import EditItemPage from './pages/shop/EditItemPage'
+import ShopPage from './pages/ShopPage'
+import AddItemPage from './pages/AddItemPage'
+import ItemDetailsPage from './pages/ItemDetailsPage'
+import EditItemPage from './pages/EditItemPage'
 import AboutPage from './pages/AboutPage'
 import TakePartPage from './pages/TakePartPage'
 import ContactPage from './pages/ContactPage'
@@ -25,7 +25,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import NoRightClick from './components/NoRightClick'
 
-import AdminPage from './pages/admin/AdminPage'
+import AdminPage from './pages/AdminPage'
 import IsAdmin from './components/IsAdmin'
 
 function App() {

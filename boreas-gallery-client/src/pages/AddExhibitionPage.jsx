@@ -1,4 +1,4 @@
-import AddExhibition from '../../components/AddExhibition';
+import AddExhibition from '../components/AddExhibition';
 
 function AddExhibitionPage() {
     return (
