@@ -77,10 +77,10 @@ function AdminPage() {
             <br /><br />
           </div>
           <div className="admin-inner-container border">
-            <h2>TBD:</h2>
+            <h2>Artists:</h2>
             <hr />
             <br />
-            <p>TBD:</p>
+            <p>List of artists:</p>
             {/* {exhibitions.map((exhibition) => (
               <>
               <ul>

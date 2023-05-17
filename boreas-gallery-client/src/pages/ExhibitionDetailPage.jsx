@@ -2,38 +2,43 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import ExhibitionDetails from '../components/ExhibitionDetails';
+import { useParams } from 'react-router-dom';
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 
 function ExhibitionDetailPage() {
-  const [exhibition, setExhibition] = useState([]);
- 
-  const getLatestExhibitions = () => {
-    const storedToken = localStorage.getItem("authToken");
+  const [isLoading, setIsLoading] = useState(true);
+  const [exhibition, setExhibition] = useState(null);
+  const { exhibitionId } = useParams();
 
-    axios
-      .get(`${API_URL}/exhibitions/latest`, { headers: { Authorization: `Bearer ${storedToken}` } })
-      .then((response) =>  setExhibition(response.data.latestExhibition))
-      .catch((error) => console.log(error));
+  const getExhibition = async () => {
+    const storedToken = localStorage.getItem("authToken");
+    try {
+      const response = await axios.get(`${API_URL}/exhibitions/${exhibitionId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` }
+      });
+      setExhibition(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+    }
   };
- 
+
   useEffect(() => {
-    getLatestExhibitions();
+    getExhibition();
   }, []);
 
-  if (!exhibition.images) {
-    return (
-    <></>
-    )
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
-    return (
-      <div className="body-container">
-        <div className='page-height-container'>
+  return (
+    <div className="body-container">
+      <div className='page-height-container'>
         <ExhibitionDetails exhibition={exhibition} />
-        </div>
       </div>
-    );
-  }
-   
-  export default ExhibitionDetailPage;
+    </div>
+  );
+}
+
+export default ExhibitionDetailPage;

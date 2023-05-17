@@ -6,7 +6,7 @@ import { AuthContext } from "./../context/auth.context";
 import BoreasLogoVerticalWhite from "./../assets/logos/BoreasLogo-vertical-white.png"
  
 function Footer() {
-  const { isLoggedIn, logOutUser } = useContext(AuthContext); 
+  const { isLoggedIn, logOutUser, isAdmin } = useContext(AuthContext); 
 
   return (
     <div className="footer-container">
@@ -20,6 +20,7 @@ function Footer() {
                     <Link to="/shop" className="link-white"> Shop </Link>
                 </div>
                 <div className="footer-container-right">
+                    {isAdmin && (<Link to="/admin" className="link-white link-margin"> Admin Portal </Link>)}
                     {!isLoggedIn && (<Link to="/login" className="link-white"> Login </Link>)}
                     {isLoggedIn && (<Link onClick={logOutUser} className="link-white"> Logout </Link>)}
                 </div>

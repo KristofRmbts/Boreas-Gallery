@@ -90,11 +90,11 @@ function EditExhibitionPage(props) {
   const storedToken = localStorage.getItem("authToken");
 
   axios
-  .delete(`${API_URL}/exhibition/${itemId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+  .delete(`${API_URL}/exhibitions/${exhibitionId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
     .then(() => {
       // Once the delete request is resolved successfully
       // navigate back to the list of projects.
-      navigate("/exhibitions");
+      navigate("/admin");
     })
     .catch((err) => console.log(err));
 };  

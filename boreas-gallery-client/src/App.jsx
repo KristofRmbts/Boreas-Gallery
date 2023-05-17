@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom"
 // Pages
 import HomePage from './pages/HomePage'
 import ExhibitionsPage from './pages/ExhibitionsPage'
+import PreviousExhibitionsPage from './pages/PreviousExhibitions'
 import AddExhibitionPage from './pages/AddExhibitionPage'
 import EditExhibitionPage from './pages/EditExhibitionPage'
 import ExhibitionDetailPage from './pages/ExhibitionDetailPage'
@@ -39,6 +40,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/exhibitions" element={<ExhibitionsPage />} />
           <Route path="/exhibitions/:exhibitionId" element={<ExhibitionDetailPage />} />
+          <Route path="/exhibitions/previous" element={<PreviousExhibitionsPage />} />
           <Route path="/exhibitions/add" element={<AddExhibitionPage />} />
           <Route path="/exhibitions/:exhibitionId/edit" element={<EditExhibitionPage />} />
 

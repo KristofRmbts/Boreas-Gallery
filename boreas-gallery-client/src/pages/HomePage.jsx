@@ -38,7 +38,7 @@ function HomePage() {
             <p className="justify-text">{exhibition.description}</p>
           </div>
           <div className="home-inner-container">
-          <Link to={`/exhibitions/${exhibition._id}`}><img src={exhibition.images[7]} alt="" height={900} /></Link>
+          <Link to={`/exhibitions/${exhibition._id}`}><img src={exhibition.images[0]} alt="" height={900} /></Link>
             <br />
           </div>
         </div>

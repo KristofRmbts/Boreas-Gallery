@@ -321,7 +321,7 @@ input:-webkit-autofill:active {
 /* ------------------------------------------------------------------ */
 /* ------------------------------------------------------------------ */
 
-/* ExhibitionsPage */
+/* ExhibitionsPage and PreviousExhibitionsPage */
 
 .current-exhibition-container {
   background-color: #929292 ;
@@ -329,7 +329,18 @@ input:-webkit-autofill:active {
   margin: 10px 0px;
 }
 
+.previous-exhibition-container {
+  background-color: #929292 ;
+  padding: 20px;
+  margin: 10px 0px;
+  width: fit-content;
+}
+
 .current-exhibition-container > h1, h2, h3, p {
+  margin: 0;
+}
+
+.previous-exhibition-container > h1, h2, h3, p {
   margin: 0;
 }
 

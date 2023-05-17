@@ -84,7 +84,7 @@ router.put("/exhibitions/:exhibitionId/edit", isAdmin, (req, res) => {
 //  DELETE /exhibitions/:exhibitionId - Deletes a specific project by Id
 router.delete("/exhibitions/:exhibitionId", isAdmin, (req, res) => {
     const { exhibitionId } = req.params
-
+    
     if(!mongoose.Types.ObjectId.isValid(exhibitionId)) {
         res.status(400).json({ message: "Specified id is not valid" })
         return
