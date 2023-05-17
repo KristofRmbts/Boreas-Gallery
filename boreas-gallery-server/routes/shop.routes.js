@@ -16,7 +16,7 @@ router.get("/shop", (req, res) => {
 
 
 // Upload image to Cloudinary
-router.post("/upload", isAdmin, fileUploader.single("imageUrl"), (req, res, next) => {
+router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
    
     if (!req.file) {
       next(new Error("No file uploaded!"));

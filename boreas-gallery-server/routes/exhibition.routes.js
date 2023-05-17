@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 
 const Exhibition = require("../models/Exhibition.model")
 const fileUploader = require('../config/cloudinary.config')
-// const { isAdmin } = require("../middleware/isAdmin.middleware")
+const { isAdmin } = require("../middleware/isAdmin.middleware")
 
 
 // GET /exhibition - Retrieves all of the items
@@ -29,7 +29,7 @@ router.post("/exhibitions/upload", fileUploader.array("images"), (req, res, next
 
 
 // POST /exhibitions - Creates a new exhibition
-router.post("/exhibitions", (req, res) => {
+router.post("/exhibitions", isAdmin, (req, res) => {
     const { title, artist, description, subtext1, subtext2, subtext3, runningTime, images } = req.body
 
     Exhibition.create({ title, artist, description, subtext1, subtext2, subtext3, runningTime, images  })
@@ -66,7 +66,7 @@ router.get("/exhibitions/:exhibitionId", (req, res) => {
 
 
 // PUT /shop/:itemId/exhibitionId - Updates a specific project by Id
-router.put("/exhibitions/:exhibitionId/edit", (req, res) => {
+router.put("/exhibitions/:exhibitionId/edit", isAdmin, (req, res) => {
     const { exhibitionId } = req.params
 
     // Check if Id is valid
@@ -82,7 +82,7 @@ router.put("/exhibitions/:exhibitionId/edit", (req, res) => {
 
 
 //  DELETE /exhibitions/:exhibitionId - Deletes a specific project by Id
-router.delete("/exhibitions/:exhibitionId", (req, res) => {
+router.delete("/exhibitions/:exhibitionId", isAdmin, (req, res) => {
     const { exhibitionId } = req.params
 
     if(!mongoose.Types.ObjectId.isValid(exhibitionId)) {

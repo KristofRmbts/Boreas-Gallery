@@ -52,7 +52,7 @@ function AdminPage() {
                 <ul className="admin-listitem">
                   <li>
                   <Link to={`/exhibitions/${exhibition._id}`} className="admin-links"><span>{exhibition.title}</span></Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <Link to={`/exhibitions/${exhibition._id}/edit`}><button className="small-button">EDIT</button></Link>
+                  <Link to={`/exhibitions/${exhibition._id}/edit`}><button className="small-button">EDIT</button></Link>&nbsp;&nbsp;
                   </li>
                 </ul>
               </div>
@@ -71,7 +71,7 @@ function AdminPage() {
                 <ul className="admin-listitem">
                   <li>
                   <Link to={`/shop/${item._id}`} className="admin-links"><span>{item.title}</span></Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <Link to={`/shop/${item._id}/edit`}><button className="small-button">EDIT</button></Link>
+                  <Link to={`/shop/${item._id}/edit`}><button className="small-button">EDIT</button></Link>&nbsp;&nbsp;
                   </li>
                 </ul>
               </div>
