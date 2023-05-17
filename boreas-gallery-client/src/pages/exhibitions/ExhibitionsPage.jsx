@@ -4,7 +4,7 @@ import axios from 'axios';
 import ArrowIcon from "../../assets/icons/arrow-right.png"
 import ExhibitionDetails from '../../components/ExhibitionDetails';
 
-const API_URL = "http://localhost:5005";
+const API_URL = import.meta.env.FRONTEND_URL || "http://localhost:5005";
 
 function ExhibitionsPage() {
   const [exhibition, setExhibition] = useState([]);

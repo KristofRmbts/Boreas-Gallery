@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
  
-const API_URL = "http://localhost:5005";
+const API_URL = import.meta.env.FRONTEND_URL || "http://localhost:5005";
  
 function AddItem(props) {
   const [title, setTitle] = useState("");
@@ -25,7 +25,6 @@ function AddItem(props) {
     const uploadData = new FormData();
  
     // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new movie in '/api/movies' POST route
     uploadData.append("imageUrl", e.target.files[0]);
  
     axios

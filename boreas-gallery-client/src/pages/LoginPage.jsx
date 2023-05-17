@@ -6,7 +6,7 @@ import authService from "./../services/auth.service";
 
 import ArrowIcon from "../assets/icons/arrow-right.png"
 
-const API_URL = "http://localhost:5005";
+const API_URL = import.meta.env.FRONTEND_URL || "http://localhost:5005";
  
 function LoginPage(props) {
   const [email, setEmail] = useState("");

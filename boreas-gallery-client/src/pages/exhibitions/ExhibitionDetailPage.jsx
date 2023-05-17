@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import ExhibitionDetails from '../../components/ExhibitionDetails';
 
-const API_URL = "http://localhost:5005";
+const API_URL = import.meta.env.FRONTEND_URL || "http://localhost:5005";
 
 function ExhibitionDetailPage() {
   const [exhibition, setExhibition] = useState([]);

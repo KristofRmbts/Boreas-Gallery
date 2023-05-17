@@ -6,7 +6,7 @@ import BB1 from "../assets/images/BB1.png"
 import BB2 from "../assets/images/BB2.png"
 import BB3 from "../assets/images/BB3.png"
 
-const API_URL = "http://localhost:5005";
+const API_URL = import.meta.env.FRONTEND_URL || "http://localhost:5005";
 
 function HomePage() {
   const [exhibition, setExhibition] = useState([]);
