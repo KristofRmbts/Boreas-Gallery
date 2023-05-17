@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams} from "react-router-dom";
 
-const API_URL = import.meta.env.FRONTEND_URL || "http://localhost:5005";
+const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
  
 function ItemDetailsPage (props) {
   const [item, setItem] = useState(null);

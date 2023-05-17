@@ -2,8 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = import.meta.env.FRONTEND_URL || "http://localhost:5005";
-
+const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 function AddExhibition(props) {
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");

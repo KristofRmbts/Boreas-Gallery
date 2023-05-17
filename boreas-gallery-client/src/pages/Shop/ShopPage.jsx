@@ -3,7 +3,7 @@ import axios from "axios";
 
 import ItemCard from "../../components/ItemCard";
 
-const API_URL = import.meta.env.FRONTEND_URL || "http://localhost:5005";
+const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 
 function ShopPage() {
   const [items, setItems] = useState([]);
