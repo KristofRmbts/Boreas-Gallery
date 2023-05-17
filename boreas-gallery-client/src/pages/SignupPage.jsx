@@ -41,7 +41,7 @@ function SignupPage(props) {
       <br /><br />
       <div className="login-container">
       <h2>Sign up with your name,<br />email and password.</h2>
-      <br />
+      <br /><br /><br />
 
       <form onSubmit={handleSignupSubmit}>
         <label className="form-label">Email address</label><br />
@@ -67,9 +67,9 @@ function SignupPage(props) {
         <button type="submit" className="form-button">Sign up</button>
       </form>
       { errorMessage && <p className="error-message">{errorMessage}</p> }
-      <br /><br />
+      <br /><br /><br />
 
-      <p className="text-s">Already have account?</p>
+      <p className="text-s">Already have account?</p><br />
       <Link to={"/login"} className="link-black"> Log in <img src={ArrowIcon} alt="Arrow" height={10} className="icon" /></Link>
       </div>
     </div>

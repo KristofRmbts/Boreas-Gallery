@@ -19,6 +19,9 @@ const itemSchema = new Schema(
       type: String,
       required: [true, 'Artist name is required.']
     },
+    quantity: {
+      type: String,
+    },
     size: [{
       type: String,
       enum: ["8x12", "10x15", "12x18", "16x24"],

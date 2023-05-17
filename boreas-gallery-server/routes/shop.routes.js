@@ -4,6 +4,7 @@ const mongoose = require("mongoose")
 
 const Item = require("../models/Item.model")
 const fileUploader = require('../config/cloudinary.config')
+const { isAdmin } = require("../middleware/isAdmin.middleware")
 
 // GET /shop - Retrieves all of the items
 router.get("/shop", (req, res) => {
@@ -15,7 +16,7 @@ router.get("/shop", (req, res) => {
 
 
 // Upload image to Cloudinary
-router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
+router.post("/upload", isAdmin, fileUploader.single("imageUrl"), (req, res, next) => {
    
     if (!req.file) {
       next(new Error("No file uploaded!"));
@@ -30,10 +31,10 @@ router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
 
 
 // POST /shop - Creates a new item
-router.post("/shop", (req, res) => {
-    const { title, exhibition, artist, description, size, material, border, imageUrl } = req.body
+router.post("/shop", isAdmin, (req, res) => {
+    const { title, exhibition, artist, quantity, description, size, material, border, imageUrl } = req.body
 
-    Item.create({ title, exhibition, artist, description, size, material, border, imageUrl })
+    Item.create({ title, exhibition, artist, quantity, description, size, material, border, imageUrl })
     .then(response => res.json(response))
     .catch(err => res.json(err))
 })
@@ -57,7 +58,7 @@ router.get("/shop/:itemId", (req, res) => {
 
 
 // PUT /shop/:itemId/edit - Updates a specific project by Id
-router.put("/shop/:itemId/edit", (req, res) => {
+router.put("/shop/:itemId/edit", isAdmin, (req, res) => {
     const { itemId } = req.params
 
     // Check if Id is valid
@@ -73,7 +74,7 @@ router.put("/shop/:itemId/edit", (req, res) => {
 
 
 //  DELETE /shop/:itemId - Deletes a specific project by Id
-router.delete("/shop/:itemId", (req, res) => {
+router.delete("/shop/:itemId", isAdmin, (req, res) => {
     const { itemId } = req.params
 
     if(!mongoose.Types.ObjectId.isValid(itemId)) {

@@ -9,16 +9,18 @@ function EditItemPage() {
     const [exhibition, setExhibition] = useState("");
     const [artist, setArtist] = useState("");
     const [description, setDescription] = useState("");
+    const [quantity, setQuantity] = useState("");
     const [size, setSize] = useState("");
     const [material, setMaterial] = useState("");
     const [border, setBorder] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [message, setMessage] = useState("");
 
   const { itemId } = useParams();  
   const navigate = useNavigate(); 
 
-// IMG File upload 
-const handleFileUpload = (e) => {
+  // IMG File upload 
+  const handleFileUpload = (e) => {
     // console.log("The file to be uploaded is: ", e.target.files[0]);
      
     const uploadData = new FormData();
@@ -33,29 +35,38 @@ const handleFileUpload = (e) => {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
         setImageUrl(response.data.fileUrl);
+        showMessage("Images uploaded successfully!");
         })
         .catch(err => console.log("Error while uploading the file: ", err));
-};
+  };
 
-// Size
-const handleSizeChange = (e) => {
+  // Upload successful message
+  const showMessage = (msg) => {
+   setMessage(msg);
+   setTimeout(() => {
+      setMessage("");
+    }, 3000);
+  };
+
+  // Size
+  const handleSizeChange = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
     setSize(selectedOptions);
-};
+  };
     
-// Materials
-const handleMaterialChange = (e) => {
+  // Materials
+  const handleMaterialChange = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
     setMaterial(selectedOptions);
-};
+  };
     
-// Border
-const handleBorderChange = (e) => {
+  // Border
+  const handleBorderChange = (e) => {
     const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
     setBorder(selectedOptions);
-};
+  };
 
-useEffect(() => {
+  useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
 
     axios
@@ -70,6 +81,7 @@ useEffect(() => {
         setDescription(oneItem.description);
         setExhibition(oneItem.exhibition);
         setArtist(oneItem.artist);
+        setQuantity(oneItem.quantity);
         setSize(oneItem.size);
         setMaterial(oneItem.material);
         setBorder(oneItem.border);
@@ -82,7 +94,7 @@ useEffect(() => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the body of the PUT request
-    const requestBody = { title, exhibition, artist, description, size, material, border, imageUrl };
+    const requestBody = { title, exhibition, artist, quantity, description, size, material, border, imageUrl };
     const storedToken = localStorage.getItem("authToken");
  
     // Make a PUT request to update the project
@@ -114,8 +126,8 @@ const deleteItem = () => {
 return (
     <div className="body-container">
     <div className="shop-add-container">
-      <h3>Add Item</h3>
-
+      <h3>Edit Item</h3>
+        <br />
         <form onSubmit={handleFormSubmit} encType="multipart/form-data">
         <div className="form-outer-container">
         <div className="form-container margin-right">
@@ -157,6 +169,16 @@ return (
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             className="form-input form-input-textarea"
+            />
+            <br /><br />
+
+            <label className="form-label">Quantity</label><br />
+            <input
+            type="text"
+            name="quantity"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            className="form-input"
             />
             <br /><br />
             </div>
@@ -209,11 +231,13 @@ return (
                 onChange={(e) => handleFileUpload(e)}
             />
             <br /><br />
+            {message && <p>{message}</p>}
             </div>
         </div>
         </div>
         <button type="submit" className="form-button">Save</button><span className="text-xs">&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;</span><button onClick={deleteItem} className="form-button">Delete</button>
         </form>
+        <br /><br />
     </div>
     </div>
   );

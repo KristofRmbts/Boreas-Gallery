@@ -48,15 +48,17 @@ function AdminPage() {
             <br />
             <p>Active exhibitions:</p>
             {exhibitions.map((exhibition) => (
-              <>
-              <ul>
-                <li>
-                <Link to={`/exhibitions/${exhibition._id}`} className="admin-links"><span>{exhibition.title}</span></Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Link to={`/exhibitions/${exhibition._id}/edit`}><button className="small-button">EDIT</button></Link>
-                </li>
-              </ul>
-              </>
+              <div key={exhibition._id}>
+                <ul className="admin-listitem">
+                  <li>
+                  <Link to={`/exhibitions/${exhibition._id}`} className="admin-links"><span>{exhibition.title}</span></Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <Link to={`/exhibitions/${exhibition._id}/edit`}><button className="small-button">EDIT</button></Link>
+                  </li>
+                </ul>
+              </div>
             ))}
+            <br />
+            <Link to={`/exhibitions/add`}><button className="small-button">ADD EXHIBITION</button></Link>
             <br /><br />
           </div>
           <div className="admin-inner-container border">
@@ -65,15 +67,17 @@ function AdminPage() {
             <br />
             <p>Articles on sale:</p>
             {items.map((item) => (
-              <>
-              <ul>
-                <li>
-                <Link to={`/shop/${item._id}`} className="admin-links"><span>{item.title}</span></Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Link to={`/shop/${item._id}/edit`}><button className="small-button">EDIT</button></Link>
-                </li>
-              </ul>
-              </>
+              <div key={item._id}>
+                <ul className="admin-listitem">
+                  <li>
+                  <Link to={`/shop/${item._id}`} className="admin-links"><span>{item.title}</span></Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <Link to={`/shop/${item._id}/edit`}><button className="small-button">EDIT</button></Link>
+                  </li>
+                </ul>
+              </div>
             ))}
+            <br />
+            <Link to={`/shop/add`}><button className="small-button">ADD ITEM</button></Link>
             <br /><br />
           </div>
           <div className="admin-inner-container border">
@@ -81,16 +85,16 @@ function AdminPage() {
             <hr />
             <br />
             <p>TBD:</p>
-            {exhibitions.map((exhibition) => (
+            {/* {exhibitions.map((exhibition) => (
               <>
               <ul>
                 <li>
-                {/* <Link to={`/exhibitions/${exhibition._id}`} className="admin-links"><span>{exhibition.title}</span></Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Link to={`/exhibitions/${exhibition._id}/edit`}><button className="small-button">EDIT</button></Link> */}
+                <Link to={`/exhibitions/${exhibition._id}`} className="admin-links"><span>{exhibition.title}</span></Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Link to={`/exhibitions/${exhibition._id}/edit`}><button className="small-button">EDIT</button></Link>
                 </li>
               </ul>
               </>
-            ))}
+            ))} */}
             <br /><br />
           </div>
         </div>

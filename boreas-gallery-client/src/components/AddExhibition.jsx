@@ -73,7 +73,7 @@ function AddExhibition(props) {
   return (
     <div className="shop-add-container">
       <h3>Add Exhibition</h3>
-
+        <br />
         <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="form-outer-container">
         <div className="form-container margin-right">
@@ -117,38 +117,6 @@ function AddExhibition(props) {
             className="form-input"
             />
             <br /><br />
-            </div>
-
-            <div className="form-container">
-            <label className="form-label">Subtext 1</label><br />
-            <input
-            type="text"
-            name="subtext1"
-            value={subtext1}
-            onChange={(e) => setSubtext1(e.target.value)}
-            className="form-input"
-            />
-            <br /><br />
-
-            <label className="form-label">Subtext 2</label><br />
-            <input
-            type="text"
-            name="subtext2"
-            value={subtext2}
-            onChange={(e) => setSubtext2(e.target.value)}
-            className="form-input"
-            />
-            <br /><br />
-
-            <label className="form-label">Subtext 3</label><br />
-            <input
-            type="text"
-            name="subtext3"
-            value={subtext3}
-            onChange={(e) => setSubtext3(e.target.value)}
-            className="form-input"
-            />
-            <br /><br />
 
             <label className="form-label">Image</label><br />
             <input
@@ -158,12 +126,47 @@ function AddExhibition(props) {
             onChange={(e) => handleFileUpload(e)}
             />
             <br /><br />
+            {message && <p>{message}</p>}
+          </div>
+
+            <div className="form-container">
+              <label className="form-label">Subtext 1</label><br />
+              <textarea
+              type="textarea"
+              style={{resize:"none"}}
+              name="subtext1"
+              value={subtext1}
+              onChange={(e) => setSubtext1(e.target.value)}
+              className="form-input form-input-textarea"
+              />
+              <br /><br />
+
+              <label className="form-label">Subtext 2</label><br />
+              <textarea
+              type="textarea"
+              style={{resize:"none"}}
+              name="subtext2"
+              value={subtext2}
+              onChange={(e) => setSubtext2(e.target.value)}
+              className="form-input form-input-textarea"
+              />
+              <br /><br />
+
+              <label className="form-label">Subtext 3</label><br />
+              <textarea
+              type="textarea"
+              style={{resize:"none"}}
+              name="subtext3"
+              value={subtext3}
+              onChange={(e) => setSubtext3(e.target.value)}
+              className="form-input form-input-textarea"
+              />
+              <br /><br />
             </div>
         </div>
         <button type="submit" className="form-button">Save</button>
         </form>
-
-        {message && <p>{message}</p>}
+        <br /><br />
     </div>
   );
 }

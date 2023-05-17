@@ -9,10 +9,12 @@ function AddItem(props) {
   const [exhibition, setExhibition] = useState("");
   const [artist, setArtist] = useState("");
   const [description, setDescription] = useState("");
+  const [quantity, setQuantity] = useState("");
   const [size, setSize] = useState("");
   const [material, setMaterial] = useState("");
   const [border, setBorder] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -32,8 +34,17 @@ function AddItem(props) {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
         setImageUrl(response.data.fileUrl);
+        showMessage("Images uploaded successfully!");
       })
       .catch(err => console.log("Error while uploading the file: ", err));
+  };
+
+  // Upload successful message
+  const showMessage = (msg) => {
+    setMessage(msg);
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
   };
 
   // Size
@@ -62,13 +73,14 @@ function AddItem(props) {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${API_URL}/shop`, { title, exhibition, artist, description, size, material, border, imageUrl }, { headers: { Authorization: `Bearer ${storedToken}` } })
+      .post(`${API_URL}/shop`, { title, exhibition, artist, description, quantity, size, material, border, imageUrl }, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
         // Reset the state
         setTitle("");
         setExhibition("");
         setArtist("");
         setDescription("");
+        setQuantity("");
         setSize("");
         setMaterial("");
         setBorder("");
@@ -82,7 +94,7 @@ function AddItem(props) {
   return (
     <div className="shop-add-container">
       <h3>Add Item</h3>
-
+        <br />
         <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="form-outer-container">
         <div className="form-container margin-right">
@@ -124,6 +136,16 @@ function AddItem(props) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             className="form-input form-input-textarea"
+            />
+            <br /><br />
+
+            <label className="form-label">Quantity</label><br />
+            <input
+            type="text"
+            name="quantity"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            className="form-input"
             />
             <br /><br />
             </div>
@@ -176,11 +198,13 @@ function AddItem(props) {
                 onChange={(e) => handleFileUpload(e)}
             />
             <br /><br />
+            {message && <p>{message}</p>}
             </div>
         </div>
         </div>
         <button type="submit" className="form-button">Save</button>
         </form>
+        <br /><br />
     </div>
   );
 }

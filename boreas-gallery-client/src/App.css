@@ -45,6 +45,16 @@
   text-align: justify;
 }
 
+.font-N27 {
+  font-family: N27;
+  font-weight: bold;
+}
+
+.moveup {
+  position: relative;
+  bottom: 25px;
+}
+
 /* Icons and Buttons */
 
 .icon {
@@ -79,6 +89,11 @@
 .link-orange {
   color: #FF5C00;
   font-family: Inter-Bold;
+  text-decoration: none;
+}
+
+.link-normal {
+  color: black;
   text-decoration: none;
 }
 
@@ -221,6 +236,60 @@ input:-webkit-autofill:active {
 /* ------------------------------------------------------------------ */
 /* ------------------------------------------------------------------ */
 
+/* HomePage */
+
+.home-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.home-inner-container {
+  text-align: start;
+}
+
+.home-link-box-img {
+  width: 100%;
+}
+
+.home-link-box-orange {
+  background-color: #FF5C00;
+  padding: 30px;
+  width: 33%;
+  text-align: center;
+}
+
+.home-link-box-white {
+  padding: 30px;
+  width: 33%;
+  text-align: center;
+}
+
+.home-link-box-grey {
+  background-color: #929292;
+  color: white;
+  padding: 30px;
+  width: 33%;
+  text-align: center;
+}
+
+.home-margin {
+  margin-right: 350px;
+}
+
+.home-margin-s {
+  margin-right: 50px;
+}
+
+.exhibition-title-home {
+  font-family: N27;
+  font-size: 70px;
+  margin: 100px 0px 25px 0px;
+}
+
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
 /* Admin Portal */
 
 .admin-container {
@@ -242,6 +311,11 @@ input:-webkit-autofill:active {
 .admin-links {
   text-decoration: none;
   color: black;
+}
+
+.admin-listitem {
+  padding-left: 10px;
+  list-style-type: none;
 }
 
 /* ------------------------------------------------------------------ */

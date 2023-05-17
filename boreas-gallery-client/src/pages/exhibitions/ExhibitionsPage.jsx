@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import Slideshow from '../../components/Slideshow'
 import ArrowIcon from "../../assets/icons/arrow-right.png"
 import ExhibitionDetails from '../../components/ExhibitionDetails';
 

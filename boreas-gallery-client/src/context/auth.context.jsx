@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-const API_URL = "http://localhost:5005";
 import authService from "./../services/auth.service";
 
 const AuthContext = React.createContext();
@@ -8,6 +6,7 @@ const AuthContext = React.createContext();
 function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [user, setUser] = useState(null);
   
   const storeToken = (token) => {
@@ -29,19 +28,25 @@ function AuthProviderWrapper(props) {
        // Update state variables        
         setIsLoggedIn(true);
         setIsLoading(false);
-        setUser(user);        
+        setUser(user); 
+
+        if (user.role === "admin") {
+          setIsAdmin(true)
+        }
       })
       .catch((error) => {
         // If the server sends an error response (invalid token) 
         // Update state variables         
         setIsLoggedIn(false);
         setIsLoading(false);
+        setIsAdmin(false)
         setUser(null);        
       });      
     } else {
       // If the token is not available (or is removed)
         setIsLoggedIn(false);
         setIsLoading(false);
+        setIsAdmin(false)
         setUser(null);      
     }   
   }
@@ -65,7 +70,7 @@ function AuthProviderWrapper(props) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, isLoading, user, storeToken, authenticateUser, logOutUser }}>
+    <AuthContext.Provider value={{ isLoggedIn, isLoading, isAdmin, user, storeToken, authenticateUser, logOutUser }}>
       {props.children}
     </AuthContext.Provider>
   )

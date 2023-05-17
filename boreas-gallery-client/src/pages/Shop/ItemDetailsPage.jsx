@@ -53,7 +53,8 @@ function ItemDetailsPage (props) {
           <img src={item.imageUrl} alt="Item preview" className="item-image" />
           <br /><br /><br /><br />
           <p className="text-s link-black">DELIVERY AND RETURNS</p>
-          <p className="text-s justify-text">Orders ship promptly after printing. All domestic orders are insured and trackable. International orders are insured and optionally trackable. No returns as all prints are custom made. An email containing tracking information will be sent once the order ships.</p>
+          <br />
+          <p className="text-s justify-text">Orders are handled directly by the artist, and ship promptly after printing. All domestic orders are insured and trackable. International orders are insured and optionally trackable. No returns as all prints are custom made.<br /><br />An email containing tracking information will be sent once the order ships.</p>
           </div>
           <div className="item-container-right">
             <h2 className="item-title">{item.title}</h2>
@@ -64,14 +65,8 @@ function ItemDetailsPage (props) {
             <br />
             <p className="shop-item-info">{item.description}</p>
             <br />
-            <p className="shop-item-info">Limited edition of 20</p>
+            <p className="shop-item-info">{item.quantity}</p>
             <p className="shop-item-info">Numbered and signed</p>
-            <br />
-            <p className="shop-item-info">Printing info 1</p>
-            <p className="shop-item-info">Printing info 2</p>
-            <p className="shop-item-info">Printing info 3</p>
-            <p className="shop-item-info">Printing info 4</p>
-            <p className="shop-item-info">Printing info 5</p>
             <br />
             <div className="form-container">
               <label className="form-label">Size</label><br />

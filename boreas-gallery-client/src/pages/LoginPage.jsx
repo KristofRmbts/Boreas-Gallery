@@ -46,7 +46,7 @@ function LoginPage(props) {
       <br /><br />
       <div className="login-container">
         <h2>Log in to your account with<br />your email and password.</h2>
-        <br />
+        <br /><br /><br />
 
         <form onSubmit={handleLoginSubmit}>
           <label className="form-label">Email address</label><br />
@@ -72,9 +72,9 @@ function LoginPage(props) {
           <button type="submit" className="form-button">Log in</button>
         </form>
         { errorMessage && <p className="error-message">{errorMessage}</p> }
-        <br /><br />
+        <br /><br /><br />
 
-        <p className="text-s">Not a member? Get exclusive access to<br />exhibitions and events, free admission every<br />day, and much more.</p>
+        <p className="text-s">Not a member? Get exclusive access to<br />exhibitions and events, free admission every<br />day, and much more.</p><br />
         <Link to={"/signup"} className="link-black"> Join today <img src={ArrowIcon} alt="Arrow" height={10} className="icon" /></Link>
       </div>
     </div>
