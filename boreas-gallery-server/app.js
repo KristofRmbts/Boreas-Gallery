@@ -27,6 +27,9 @@ app.use("/auth", authRoutes)
 const shopRoutes = require("./routes/shop.routes")
 app.use("/", shopRoutes)
 
+const artistRoutes = require("./routes/artist.routes")
+app.use("/", artistRoutes)
+
 const exhibitionRoutes = require("./routes/exhibition.routes")
 app.use("/", exhibitionRoutes)
 

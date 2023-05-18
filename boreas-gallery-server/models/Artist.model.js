@@ -15,17 +15,14 @@ const artistSchema = new Schema(
       required: [true, 'Description is required.']
     },
     email: {
-      type: Email,
+      type: String,
     },
     social1: {
       type: String,
     },
     social2: {
-        type: String,
-      },
-    social1: {
       type: String,
-    },    
+    },  
     social3: {
         type: String,
     },
@@ -39,6 +36,6 @@ const artistSchema = new Schema(
   }
 );
 
-const Item = model("Artist", artistSchema);
+const Artist = model("Artist", artistSchema);
 
 module.exports = Artist;

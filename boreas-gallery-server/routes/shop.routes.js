@@ -40,7 +40,7 @@ router.post("/shop", isAdmin, (req, res) => {
 })
 
 
-// GET /shop/:itemId = Retrieves a specific project by Id
+// GET /shop/:itemId = Retrieves a specific item by Id
 router.get("/shop/:itemId", (req, res) => {
     const { itemId } = req.params
 
@@ -57,7 +57,7 @@ router.get("/shop/:itemId", (req, res) => {
 })
 
 
-// PUT /shop/:itemId/edit - Updates a specific project by Id
+// PUT /shop/:itemId/edit - Updates a specific item by Id
 router.put("/shop/:itemId/edit", isAdmin, (req, res) => {
     const { itemId } = req.params
 
@@ -73,7 +73,7 @@ router.put("/shop/:itemId/edit", isAdmin, (req, res) => {
 })
 
 
-//  DELETE /shop/:itemId - Deletes a specific project by Id
+//  DELETE /shop/:itemId - Deletes a specific item by Id
 router.delete("/shop/:itemId", isAdmin, (req, res) => {
     const { itemId } = req.params
 

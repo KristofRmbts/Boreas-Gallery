@@ -442,6 +442,53 @@ input:-webkit-autofill:active {
 /* ------------------------------------------------------------------ */
 /* ------------------------------------------------------------------ */
 
+/* ArtistsPage */
+
+.artist-container {
+  display: flex;
+  flex: row;
+}
+
+.artist-inner-container {
+  margin: 0px 15px 15px 0px;
+}
+
+.artist-image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.artist-image-container:hover .artist-name {
+  opacity: 1;
+}
+
+.artist-name {
+  font-family: N27;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: white;
+  padding: 10px;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.artist-list-container {
+  margin: 0 auto;
+}
+
+.artist-row {
+  display: flex;
+}
+
+.artist-item {
+  flex: 1;
+}
+
+/* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+
 /* Shop - Add item */
 
 .form-outer-container {

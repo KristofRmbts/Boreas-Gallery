@@ -73,20 +73,20 @@ function EditExhibitionPage(props) {
       const requestBody = { title, artist, description, runningTime, subtext1, subtext2, subtext3, images };
       const storedToken = localStorage.getItem("authToken");
    
-      // Make a PUT request to update the project
+      // Make a PUT request to update the exhibition
       axios
       .put(`${API_URL}/exhibitions/${exhibitionId}/edit`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
         .then((response) => {
-          // Once the request is resolved successfully and the project
-          // is updated we navigate back to the details page
-          navigate(`/exhibitions`)
+          // Once the request is resolved successfully and the exhibition
+          // is updated we navigate back to the exhibition details page
+          navigate(`/exhibitions/${exhibitionId}`)
         });
       }
 
   // Delete exhibition
 
   const deleteExhibition = () => {
-  // Make a DELETE request to delete the project
+  // Make a DELETE request to delete the exhibition
   const storedToken = localStorage.getItem("authToken");
 
   axios

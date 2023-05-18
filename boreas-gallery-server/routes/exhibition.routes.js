@@ -7,7 +7,7 @@ const fileUploader = require('./../config/cloudinary.config')
 const { isAdmin } = require("./../middleware/isAdmin.middleware")
 
 
-// GET /exhibition - Retrieves all of the items
+// GET /exhibition - Retrieves all of the exhibitions
 router.get("/exhibitions", (req, res) => {
     Exhibition.find()
     .then(allExhibitions => res.json(allExhibitions))
@@ -42,14 +42,13 @@ router.post("/exhibitions", isAdmin, (req, res) => {
 router.get("/exhibitions/latest", (req, res) => {
     Exhibition.find()
     .then(allExhibitions => {
-        // res.json(allExhibitions)
         res.json({latestExhibition: allExhibitions.sort((a, b) => b.createdAt - a.createdAt)[0]})
     })
     .catch(err => res.json(err))
 })
 
 
-// GET /exhibitions/:exhibitionId = Retrieves a specific project by Id
+// GET /exhibitions/:exhibitionId = Retrieves a specific exhibition by Id
 router.get("/exhibitions/:exhibitionId", (req, res) => {
     const { exhibitionId } = req.params
 
@@ -65,7 +64,7 @@ router.get("/exhibitions/:exhibitionId", (req, res) => {
 })
 
 
-// PUT /shop/:itemId/exhibitionId - Updates a specific project by Id
+// PUT /shop/:itemId/exhibitionId - Updates a specific exhibition by Id
 router.put("/exhibitions/:exhibitionId/edit", isAdmin, (req, res) => {
     const { exhibitionId } = req.params
 
@@ -81,7 +80,7 @@ router.put("/exhibitions/:exhibitionId/edit", isAdmin, (req, res) => {
 })
 
 
-//  DELETE /exhibitions/:exhibitionId - Deletes a specific project by Id
+//  DELETE /exhibitions/:exhibitionId - Deletes a specific exhibition by Id
 router.delete("/exhibitions/:exhibitionId", isAdmin, (req, res) => {
     const { exhibitionId } = req.params
     

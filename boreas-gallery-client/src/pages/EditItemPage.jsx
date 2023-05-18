@@ -74,7 +74,7 @@ function EditItemPage() {
     .then((response) => {
         /* 
           We update the state with the project data coming from the response.
-          This way we set inputs to show the actual title and description of the project
+          This way we set inputs to show the actual title and description of the item
         */
         const oneItem = response.data;
         setTitle(oneItem.title);
@@ -101,7 +101,7 @@ function EditItemPage() {
     axios
     .put(`${API_URL}/shop/${itemId}/edit`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
-        // Once the request is resolved successfully and the project
+        // Once the request is resolved successfully and the item
         // is updated we navigate back to the details page
         navigate(`/shop/${itemId}`)
       });
@@ -110,14 +110,14 @@ function EditItemPage() {
 // Delete item
 
 const deleteItem = () => {
-    // Make a DELETE request to delete the project
+    // Make a DELETE request to delete the item
     const storedToken = localStorage.getItem("authToken");
 
     axios
     .delete(`${API_URL}/shop/${itemId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(() => {
         // Once the delete request is resolved successfully
-        // navigate back to the list of projects.
+        // navigate back to the list of items.
         navigate("/shop");
       })
       .catch((err) => console.log(err));

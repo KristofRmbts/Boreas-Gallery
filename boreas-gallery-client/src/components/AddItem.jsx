@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
  
 const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
  
-function AddItem(props) {
+function AddItem() {
   const [title, setTitle] = useState("");
   const [exhibition, setExhibition] = useState("");
   const [artist, setArtist] = useState("");
@@ -68,7 +68,6 @@ function AddItem(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
  
-    // const requestBody = { title, exhibition, description, price, size, material, border, imageUrl };
     const storedToken = localStorage.getItem("authToken");
 
     axios
@@ -96,7 +95,7 @@ function AddItem(props) {
         <br />
         <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="form-outer-container">
-        <div className="form-container margin-right">
+          <div className="form-container margin-right">
             <label className="form-label">Title</label><br />
             <input
             type="text"
@@ -147,9 +146,9 @@ function AddItem(props) {
             className="form-input"
             />
             <br /><br />
-            </div>
+          </div>
 
-            <div className="form-container">
+          <div className="form-container">
             <label className="form-label">Size</label><br />
             <select
             name="size"
@@ -164,7 +163,6 @@ function AddItem(props) {
             </select>
             <br /><br />
 
-            <div className="form-container">
             <label className="form-label">Material</label><br />
             <select
             name="material"
@@ -198,8 +196,7 @@ function AddItem(props) {
             />
             <br /><br />
             {message && <p>{message}</p>}
-            </div>
-        </div>
+          </div>
         </div>
         <button type="submit" className="form-button">Save</button>
         </form>
