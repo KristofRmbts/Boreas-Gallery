@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 
+import ArrowIcon from "./../assets/icons/arrow-right.png"
 import BB1 from "./../assets/images/BB1.png"
 import BB2 from "./../assets/images/BB2.png"
 import BB3 from "./../assets/images/BB3.png"
@@ -42,7 +43,7 @@ function HomePage() {
             <br />
           </div>
         </div>
-        <Link to={`/exhibitions/${exhibition._id}`} className='link-black'><p className='moveup'>NOW ON VIEW</p></Link>
+        <Link to={`/exhibitions/${exhibition._id}`} className='link-black'><p className='moveup'>NOW ON VIEW <img src={ArrowIcon} alt="arrow right" height={11} /></p></Link>
         <br />
         <div className="home-container">
           <div className="home-inner-container home-margin-s home-link-box-orange">
@@ -69,7 +70,7 @@ function HomePage() {
             <br /><br />
             <h2 className="font-N27 justify-text">Take Part</h2>
             <br />
-            <p className="justify-text">Want your work displayed here? Reach out to us and maybe you will be the artist to exhibit next!</p>
+            <p className="justify-text">Want your work displayed here? Reach out to us and you could be the artist to exhibit next!</p>
             </Link>
           </div>
         </div>

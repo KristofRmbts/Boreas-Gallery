@@ -63,9 +63,10 @@ const Slideshow = ({ images }) => {
             </div>
           </div>
         </div>
-        <br /><br /><br /><br /><br />
-        <button onClick={goToPreviousImage} className='form-button'>&lt;</button><span>&nbsp;&nbsp;&nbsp;</span>
-        <button onClick={goToNextImage} className='form-button'>&gt;</button>
+        <div className='slideshow-buttons'>
+          <button onClick={goToPreviousImage} className='form-button'>&lt;</button><span>&nbsp;&nbsp;&nbsp;</span>
+          <button onClick={goToNextImage} className='form-button'>&gt;</button>
+        </div>
         <br /><br />
       </div>
       {showModal && (

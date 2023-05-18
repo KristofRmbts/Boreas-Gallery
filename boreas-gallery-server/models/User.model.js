@@ -22,6 +22,9 @@ const userSchema = new Schema(
     order: [
       {type: Schema.Types.ObjectId, ref: "Order"},
     ],
+  },
+  {
+    timestamps: true
   }
 );
 

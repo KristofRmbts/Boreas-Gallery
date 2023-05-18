@@ -16,8 +16,6 @@ function Footer() {
                 <div className="footer-container-left">
                     <Link to="/about" className="link-white link-margin"> About us </Link>
                     <Link to="/takepart" className="link-orange link-margin"> Take part </Link>
-                    <Link to="/contact" className="link-white link-margin"> Contact us </Link>
-                    <Link to="/shop" className="link-white"> Shop </Link>
                 </div>
                 <div className="footer-container-right">
                     {isAdmin && (<Link to="/admin" className="link-white link-margin"> Admin Portal </Link>)}

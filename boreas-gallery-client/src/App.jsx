@@ -15,7 +15,6 @@ import ItemDetailsPage from './pages/ItemDetailsPage'
 import EditItemPage from './pages/EditItemPage'
 import AboutPage from './pages/AboutPage'
 import TakePartPage from './pages/TakePartPage'
-import ContactPage from './pages/ContactPage'
 import SignupPage from './pages/SignupPage'
 import LoginPage from './pages/LoginPage'
 
@@ -53,7 +52,6 @@ function App() {
 
           <Route path="/about" element={<AboutPage />} />
           <Route path="/takepart" element={<TakePartPage />} />
-          <Route path="/contact" element={<ContactPage />} />
           
           <Route path="/signup" element={ <IsAnon><SignupPage /></IsAnon> } /> 
           <Route path="/login" element={ <IsAnon><LoginPage /></IsAnon> } />

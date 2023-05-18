@@ -26,8 +26,8 @@ function ShopPage() {
     return (
       <div className="body-container">
         <h1>Shop</h1>
+        <p>Shop the latest goodies from Boreas, including recent exhibition<br />prints, merchandise and artist’s books.</p>
         <br />
-          {/* <AddItem refreshItems={getAllItems} /> */}
         <br />
         <div className="items-list-container">
         {items.map((item) => (
