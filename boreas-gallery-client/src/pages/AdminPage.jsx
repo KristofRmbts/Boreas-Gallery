@@ -52,6 +52,25 @@ function AdminPage() {
         <br />
         <div className="admin-container">
           <div className="admin-inner-container border">
+            <h2>Artists:</h2>
+            <hr />
+            <br />
+            <p>List of artists:</p>
+            {artists.map((artist) => (
+              <div key={artist._id}>
+                <ul className="admin-listitem">
+                  <li>
+                  <Link to={`/artists/${artist._id}`} className="admin-links"><span>{artist.firstName} {artist.last}</span></Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <Link to={`/artists/${artist._id}/edit`}><button className="small-button">EDIT</button></Link>&nbsp;&nbsp;
+                  </li>
+                </ul>
+              </div>
+            ))}
+            <br />
+            <Link to={`/artists/add`}><button className="small-button">ADD ARTIST</button></Link>
+            <br /><br />
+          </div>
+          <div className="admin-inner-container border">
             <h2>Exhibitions:</h2>
             <hr />
             <br />
@@ -81,25 +100,6 @@ function AdminPage() {
                   <li>
                   <Link to={`/shop/${item._id}`} className="admin-links"><span>{item.title}</span></Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <Link to={`/shop/${item._id}/edit`}><button className="small-button">EDIT</button></Link>&nbsp;&nbsp;
-                  </li>
-                </ul>
-              </div>
-            ))}
-            <br />
-            <Link to={`/shop/add`}><button className="small-button">ADD ITEM</button></Link>
-            <br /><br />
-          </div>
-          <div className="admin-inner-container border">
-            <h2>Artists:</h2>
-            <hr />
-            <br />
-            <p>List of artists:</p>
-            {artists.map((artist) => (
-              <div key={artist._id}>
-                <ul className="admin-listitem">
-                  <li>
-                  <Link to={`/artists/${artist._id}`} className="admin-links"><span>{artist.firstName} {artist.last}</span></Link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <Link to={`/artists/${artist._id}/edit`}><button className="small-button">EDIT</button></Link>&nbsp;&nbsp;
                   </li>
                 </ul>
               </div>
