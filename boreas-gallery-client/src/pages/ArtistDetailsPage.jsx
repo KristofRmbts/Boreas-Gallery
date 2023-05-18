@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams} from "react-router-dom";
 
+import IG from './../assets/icons/ig.png'
+
 const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
  
 function ArtistDetailsPage () {
@@ -25,22 +27,44 @@ function ArtistDetailsPage () {
     getArtist();
   }, []);
 
+  if (artist === null) {
+    return <div></div>;
+  }
+
   return (
     <div className="body-container">
-      <h1>Coming soon</h1>
-      <h2>Details of:</h2>
-      <br />
+      <h1>Artist</h1>
       {artist && (
         <div>
-            <p>{artist.firstName} {artist.lastName}</p>
-            <p>{artist.description}</p>
-            <p>{artist.email}</p>
-            <p>{artist.social1}</p>
-            <p>{artist.social2}</p>
-            <p>{artist.social3}</p>
+          <div className="admin-container">
+            <div className="admin-inner-container">
+              <h3 className="font-N27">About</h3>
+              <br />
+              <p className="justify-text">{artist.description}</p>
+              <br />
+              <p className="justify-text"></p>
+              <br />
+              <p className="justify-text"></p>
+              <br />
+              <p className="justify-text"></p>
+            </div>
+            <div className="admin-inner-container">
+              <img src={artist.imageUrl} alt="Artist image" width={300} />
+              <br /><br />
+              <h3 className="font-N27">Name</h3>
+              <p>{artist.firstName} {artist.lastName}</p>
+              <br />
+              <h3 className="font-N27">Contact</h3>
+              <a href={`mailto:${artist.email}`} className="link-normal"><p>{artist.email}</p></a>
+              <br />
+              <h3 className="font-N27">Follow on Social Media</h3>
+              <a href={`${artist.social1}`} className="link-normal"><img src={IG} alt="Instagram" height={20} className="social-icon" /></a>
+              <br /><br />
+            </div>
+          </div>
+        <br /><br />
         </div>
       )}
-      <br /><br />
     </div>
   );
 }

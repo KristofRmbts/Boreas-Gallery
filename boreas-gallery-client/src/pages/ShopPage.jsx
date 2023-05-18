@@ -23,6 +23,10 @@ function ShopPage() {
     getAllItems();
   }, []);
 
+  if (items === null) {
+    return <div></div>;
+  }
+
     return (
       <div className="body-container">
         <h1>Shop</h1>

@@ -20,6 +20,10 @@ function PreviousExhibitionsPage() {
     getAllExhibitions();
   }, []);
 
+  if (exhibitions === null) {
+    return <div></div>;
+  }
+
     return (
       <div className="body-container">
         <div className='page-height-container'>

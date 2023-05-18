@@ -66,6 +66,10 @@
   padding: 0px 5px;
 }
 
+.social-icon {
+  padding: 5px 0px;
+}
+
 .small-button {
   width: fit-content;
   padding: 5px;

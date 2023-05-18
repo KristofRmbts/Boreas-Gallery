@@ -45,6 +45,10 @@ function ItemDetailsPage (props) {
     getItem();
   }, []);
 
+  if (item === null) {
+    return <div></div>;
+  }
+
   return (
     <div className="body-container">
       {item && (

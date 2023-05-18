@@ -43,6 +43,10 @@ function ArtistsPage() {
     });
   }
 
+  if (artists === null) {
+    return <div></div>;
+  }
+
     return (
       <div className="body-container">
         <h1>Artists</h1>

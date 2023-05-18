@@ -46,6 +46,10 @@ function AdminPage() {
     getAllArtists();
   }, []);
 
+  if (exhibitions === null || artists === null) {
+    return <div></div>;
+  }
+
     return (
       <div className="body-container">
         <h1>Admin portal</h1>
