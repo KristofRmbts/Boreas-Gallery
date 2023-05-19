@@ -4,20 +4,20 @@ const exhibitionSchema = new Schema(
   {
     title: {
       type: String,
-      required: [true, 'Title is required.'],
-      unique: true
+      required: [true, "Title is required."],
+      unique: true,
     },
     artist: {
       type: String,
-      required: [true, 'Artist is required.']
+      required: [true, "Artist is required."],
     },
     description: {
       type: String,
-      required: [true, 'Description is required.']
+      required: [true, "Description is required."],
     },
     runningTime: {
       type: String,
-      required: [true, 'Running time is required.']
+      required: [true, "Running time is required."],
     },
     subtext1: {
       type: String,
@@ -28,13 +28,15 @@ const exhibitionSchema = new Schema(
     subtext3: {
       type: String,
     },
-    images: [{
-      type: String,
-      required: [true],
-    }],
+    images: [
+      {
+        type: String,
+        required: [true],
+      },
+    ],
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

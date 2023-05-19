@@ -1,21 +1,23 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import IG from './../assets/icons/ig.png'
+import IG from "./../assets/icons/ig.png";
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
- 
-function ArtistDetailsPage () {
+
+function ArtistDetailsPage() {
   const [artist, setArtist] = useState(null);
 
-  const { artistId } = useParams();        
+  const { artistId } = useParams();
 
   const getArtist = () => {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .get(`${API_URL}/artists/${artistId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+      .get(`${API_URL}/artists/${artistId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         const oneArtist = response.data;
         setArtist(oneArtist);
@@ -23,7 +25,7 @@ function ArtistDetailsPage () {
       .catch((error) => console.log(error));
   };
 
-  useEffect(()=> {
+  useEffect(() => {
     getArtist();
   }, []);
 
@@ -50,23 +52,37 @@ function ArtistDetailsPage () {
             </div>
             <div className="admin-inner-container">
               <img src={artist.imageUrl} alt="Artist image" width={300} />
-              <br /><br />
+              <br />
+              <br />
               <h3 className="font-N27">Name</h3>
-              <p>{artist.firstName} {artist.lastName}</p>
+              <p>
+                {artist.firstName} {artist.lastName}
+              </p>
               <br />
               <h3 className="font-N27">Contact</h3>
-              <a href={`mailto:${artist.email}`} className="link-normal"><p>{artist.email}</p></a>
+              <a href={`mailto:${artist.email}`} className="link-normal">
+                <p>{artist.email}</p>
+              </a>
               <br />
               <h3 className="font-N27">Follow on Social Media</h3>
-              <a href={`${artist.social1}`} className="link-normal"><img src={IG} alt="Instagram" height={20} className="social-icon" /></a>
-              <br /><br />
+              <a href={`${artist.social1}`} className="link-normal">
+                <img
+                  src={IG}
+                  alt="Instagram"
+                  height={20}
+                  className="social-icon"
+                />
+              </a>
+              <br />
+              <br />
             </div>
           </div>
-        <br /><br />
+          <br />
+          <br />
         </div>
       )}
     </div>
   );
 }
- 
+
 export default ArtistDetailsPage;

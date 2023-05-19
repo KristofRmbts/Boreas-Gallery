@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Modal from './Modal';
+import React, { useState } from "react";
+import Modal from "./Modal";
 
 const Slideshow = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -8,7 +8,9 @@ const Slideshow = ({ images }) => {
   const [modalImageIndex, setModalImageIndex] = useState(0);
 
   const goToPreviousImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex - 2 + images.length) % images.length);
+    setCurrentImageIndex(
+      (prevIndex) => (prevIndex - 2 + images.length) % images.length
+    );
     setAnimate(true);
   };
 
@@ -32,48 +34,63 @@ const Slideshow = ({ images }) => {
 
   return (
     <div>
-      <div className='slideshow'>
-        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <div className="slideshow">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <div
-          className={`slideshow-images ${animate ? 'animate' : ''}`}
+          className={`slideshow-images ${animate ? "animate" : ""}`}
           onAnimationEnd={handleAnimationEnd}
           style={{
-            display: 'flex',
-            justifyContent: 'center',
+            display: "flex",
+            justifyContent: "center",
           }}
         >
-          <div className='slideshow-img-frame'>
-            <div className='slideshow-img-passpartout'>
+          <div className="slideshow-img-frame">
+            <div className="slideshow-img-passpartout">
               <img
                 src={images[currentImageIndex]}
                 alt={`Slideshow Image ${currentImageIndex}`}
-                className='slideshow-img'
+                className="slideshow-img"
                 onClick={() => openModal(currentImageIndex)}
               />
             </div>
           </div>
-          <div className='slideshow-img-frame'>
-            <div className='slideshow-img-passpartout'>
+          <div className="slideshow-img-frame">
+            <div className="slideshow-img-passpartout">
               <img
                 src={images[(currentImageIndex + 1) % images.length]}
-                alt={`Slideshow Image ${(currentImageIndex + 1) % images.length}`}
-                className='slideshow-img'
-                onClick={() => openModal((currentImageIndex + 1) % images.length)}
+                alt={`Slideshow Image ${
+                  (currentImageIndex + 1) % images.length
+                }`}
+                className="slideshow-img"
+                onClick={() =>
+                  openModal((currentImageIndex + 1) % images.length)
+                }
               />
             </div>
           </div>
         </div>
-        <div className='slideshow-buttons'>
-          <button onClick={goToPreviousImage} className='form-button'>&lt;</button><span>&nbsp;&nbsp;&nbsp;</span>
-          <button onClick={goToNextImage} className='form-button'>&gt;</button>
+        <div className="slideshow-buttons">
+          <button onClick={goToPreviousImage} className="form-button">
+            &lt;
+          </button>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          <button onClick={goToNextImage} className="form-button">
+            &gt;
+          </button>
         </div>
-        <br /><br />
+        <br />
+        <br />
       </div>
       {showModal && (
-        <Modal
-          image={images[modalImageIndex]}
-          onClose={closeModal}
-        />
+        <Modal image={images[modalImageIndex]} onClose={closeModal} />
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 
 // ℹ️ package responsible to make the connection with mongodb
 // https://www.npmjs.com/package/mongoose
@@ -9,5 +9,7 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(x => console.log(`Connected the Database: "${x.connections[0].name}"`))
-  .catch(err => console.error('Error connecting to mongo', err));
+  .then((x) =>
+    console.log(`Connected the Database: "${x.connections[0].name}"`)
+  )
+  .catch((err) => console.error("Error connecting to mongo", err));

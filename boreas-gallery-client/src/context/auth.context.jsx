@@ -8,72 +8,83 @@ function AuthProviderWrapper(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
   const [user, setUser] = useState(null);
-  
+
   const storeToken = (token) => {
     // Save in local storage
-    localStorage.setItem('authToken', token);
-  }
+    localStorage.setItem("authToken", token);
+  };
 
-  const authenticateUser = () => { 
+  const authenticateUser = () => {
     // Get the stored token from the localStorage
-    const storedToken = localStorage.getItem('authToken');
-    
+    const storedToken = localStorage.getItem("authToken");
+
     // If the token exists in the localStorage
     if (storedToken) {
       // We must send the JWT token in the request's "Authorization" Headers
-      authService.verify()
-      .then((response) => {
-        // If the server verifies that the JWT token is valid  
-        const user = response.data;
-       // Update state variables        
-        setIsLoggedIn(true);
-        setIsLoading(false);
-        setUser(user); 
+      authService
+        .verify()
+        .then((response) => {
+          // If the server verifies that the JWT token is valid
+          const user = response.data;
+          // Update state variables
+          setIsLoggedIn(true);
+          setIsLoading(false);
+          setUser(user);
 
-        if (user.role === "admin") {
-          setIsAdmin(true)
-        }
-      })
-      .catch((error) => {
-        // If the server sends an error response (invalid token) 
-        // Update state variables         
-        setIsLoggedIn(false);
-        setIsLoading(false);
-        setIsAdmin(false)
-        setUser(null);        
-      });      
+          if (user.role === "admin") {
+            setIsAdmin(true);
+          }
+        })
+        .catch((error) => {
+          // If the server sends an error response (invalid token)
+          // Update state variables
+          setIsLoggedIn(false);
+          setIsLoading(false);
+          setIsAdmin(false);
+          setUser(null);
+        });
     } else {
       // If the token is not available (or is removed)
-        setIsLoggedIn(false);
-        setIsLoading(false);
-        setIsAdmin(false)
-        setUser(null);      
-    }   
-  }
+      setIsLoggedIn(false);
+      setIsLoading(false);
+      setIsAdmin(false);
+      setUser(null);
+    }
+  };
 
   // Remove token when logged out
 
   const removeToken = () => {
     // Upon logout, remove the token from the localStorage
     localStorage.removeItem("authToken");
-  }
+  };
 
   const logOutUser = () => {
     // To log out the user, remove the token
     removeToken();
-    // and update the state variables    
+    // and update the state variables
     authenticateUser();
-  }  
+  };
 
-  useEffect(() => {                                
+  useEffect(() => {
     authenticateUser();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, isLoading, isAdmin, user, storeToken, authenticateUser, logOutUser }}>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn,
+        isLoading,
+        isAdmin,
+        user,
+        storeToken,
+        authenticateUser,
+        logOutUser,
+      }}
+    >
       {props.children}
     </AuthContext.Provider>
-  )
+  );
 }
 
 export { AuthProviderWrapper, AuthContext };

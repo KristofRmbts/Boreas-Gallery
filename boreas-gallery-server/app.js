@@ -12,7 +12,7 @@ const express = require("express");
 const app = express();
 
 // Middleware
-const { isAuthenticated } = require("./middleware/jwt.middleware")
+const { isAuthenticated } = require("./middleware/jwt.middleware");
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
@@ -21,17 +21,17 @@ require("./config")(app);
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
-const authRoutes = require("./routes/auth.routes")
-app.use("/auth", authRoutes)
+const authRoutes = require("./routes/auth.routes");
+app.use("/auth", authRoutes);
 
-const shopRoutes = require("./routes/shop.routes")
-app.use("/", shopRoutes)
+const shopRoutes = require("./routes/shop.routes");
+app.use("/", shopRoutes);
 
-const artistRoutes = require("./routes/artist.routes")
-app.use("/", artistRoutes)
+const artistRoutes = require("./routes/artist.routes");
+app.use("/", artistRoutes);
 
-const exhibitionRoutes = require("./routes/exhibition.routes")
-app.use("/", exhibitionRoutes)
+const exhibitionRoutes = require("./routes/exhibition.routes");
+app.use("/", exhibitionRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

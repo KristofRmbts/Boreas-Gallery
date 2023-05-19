@@ -17,7 +17,7 @@ function AddExhibition() {
 
   const navigate = useNavigate();
 
-  // IMG File upload 
+  // IMG File upload
   const handleFileUpload = (e) => {
     const files = e.target.files;
 
@@ -53,7 +53,20 @@ function AddExhibition() {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${API_URL}/exhibitions`,{ title, artist, description, subtext1, subtext2, subtext3, runningTime, images }, { headers: { Authorization: `Bearer ${storedToken}` } })
+      .post(
+        `${API_URL}/exhibitions`,
+        {
+          title,
+          artist,
+          description,
+          subtext1,
+          subtext2,
+          subtext3,
+          runningTime,
+          images,
+        },
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
       .then((response) => {
         // Reset the state
         setTitle("");
@@ -69,106 +82,125 @@ function AddExhibition() {
       })
       .catch((error) => console.log(error));
   };
- 
+
   return (
     <div className="shop-add-container">
       <h3>Add Exhibition</h3>
-        <br />
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <br />
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="form-outer-container">
-        <div className="form-container margin-right">
-            <label className="form-label">Title</label><br />
+          <div className="form-container margin-right">
+            <label className="form-label">Title</label>
+            <br />
             <input
-            type="text"
-            name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="form-input"
+              type="text"
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="form-input"
             />
-            <br /><br />
+            <br />
+            <br />
 
-            <label className="form-label">Artist name</label><br />
+            <label className="form-label">Artist name</label>
+            <br />
             <input
-            type="text"
-            name="artist"
-            value={artist}
-            onChange={(e) => setArtist(e.target.value)}
-            className="form-input"
+              type="text"
+              name="artist"
+              value={artist}
+              onChange={(e) => setArtist(e.target.value)}
+              className="form-input"
             />
-            <br /><br />
+            <br />
+            <br />
 
-            <label className="form-label">Description</label><br />
+            <label className="form-label">Description</label>
+            <br />
             <textarea
-            type="textarea"
-            style={{resize:"none"}}
-            name="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="form-input form-input-textarea"
+              type="textarea"
+              style={{ resize: "none" }}
+              name="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="form-input form-input-textarea"
             />
-            <br /><br />
+            <br />
+            <br />
 
-            <label className="form-label">Running Time</label><br />
+            <label className="form-label">Running Time</label>
+            <br />
             <input
-            type="text"
-            name="runningTime"
-            value={runningTime}
-            onChange={(e) => setRunningTime(e.target.value)}
-            className="form-input"
+              type="text"
+              name="runningTime"
+              value={runningTime}
+              onChange={(e) => setRunningTime(e.target.value)}
+              className="form-input"
             />
-            <br /><br />
+            <br />
+            <br />
 
-            <label className="form-label">Image</label><br />
+            <label className="form-label">Image</label>
+            <br />
             <input
-            type="file"
-            name="imageUrl"
-            multiple
-            onChange={(e) => handleFileUpload(e)}
+              type="file"
+              name="imageUrl"
+              multiple
+              onChange={(e) => handleFileUpload(e)}
             />
-            <br /><br />
+            <br />
+            <br />
             {message && <p>{message}</p>}
           </div>
 
-            <div className="form-container">
-              <label className="form-label">Subtext 1</label><br />
-              <textarea
+          <div className="form-container">
+            <label className="form-label">Subtext 1</label>
+            <br />
+            <textarea
               type="textarea"
-              style={{resize:"none"}}
+              style={{ resize: "none" }}
               name="subtext1"
               value={subtext1}
               onChange={(e) => setSubtext1(e.target.value)}
               className="form-input form-input-textarea"
-              />
-              <br /><br />
+            />
+            <br />
+            <br />
 
-              <label className="form-label">Subtext 2</label><br />
-              <textarea
+            <label className="form-label">Subtext 2</label>
+            <br />
+            <textarea
               type="textarea"
-              style={{resize:"none"}}
+              style={{ resize: "none" }}
               name="subtext2"
               value={subtext2}
               onChange={(e) => setSubtext2(e.target.value)}
               className="form-input form-input-textarea"
-              />
-              <br /><br />
+            />
+            <br />
+            <br />
 
-              <label className="form-label">Subtext 3</label><br />
-              <textarea
+            <label className="form-label">Subtext 3</label>
+            <br />
+            <textarea
               type="textarea"
-              style={{resize:"none"}}
+              style={{ resize: "none" }}
               name="subtext3"
               value={subtext3}
               onChange={(e) => setSubtext3(e.target.value)}
               className="form-input form-input-textarea"
-              />
-              <br /><br />
-            </div>
+            />
+            <br />
+            <br />
+          </div>
         </div>
-        <button type="submit" className="form-button">Save</button>
-        </form>
-        <br /><br />
+        <button type="submit" className="form-button">
+          Save
+        </button>
+      </form>
+      <br />
+      <br />
     </div>
   );
 }
- 
+
 export default AddExhibition;

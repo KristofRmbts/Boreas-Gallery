@@ -4,15 +4,15 @@ const artistSchema = new Schema(
   {
     firstName: {
       type: String,
-      required: [true, 'First name is required.'],
+      required: [true, "First name is required."],
     },
     lastName: {
       type: String,
-      required: [true, 'Last name is required.'],
+      required: [true, "Last name is required."],
     },
     description: {
       type: String,
-      required: [true, 'Description is required.']
+      required: [true, "Description is required."],
     },
     email: {
       type: String,
@@ -22,17 +22,17 @@ const artistSchema = new Schema(
     },
     social2: {
       type: String,
-    },  
+    },
     social3: {
-        type: String,
+      type: String,
     },
     imageUrl: {
       type: String,
-      required: [true, 'Image is required.'],
+      required: [true, "Image is required."],
     },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 

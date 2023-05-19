@@ -96,7 +96,7 @@
 }
 
 .link-orange {
-  color: #FF5C00;
+  color: #ff5c00;
   font-family: Inter-Bold;
   text-decoration: none;
 }
@@ -136,7 +136,7 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;
-  text-overflow: '';
+  text-overflow: "";
   border-radius: 0;
   height: fit-content;
   padding: 10px;
@@ -147,19 +147,19 @@ select {
   height: 168px;
 }
 
-.form-input:focus{
-  outline: none
+.form-input:focus {
+  outline: none;
 }
 
-.form-select:focus{
-  outline: none
+.form-select:focus {
+  outline: none;
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 .form-button {
@@ -229,7 +229,7 @@ input:-webkit-autofill:active {
 
 .footer-container-right {
   text-align: end;
-  align-self:last baseline;
+  align-self: last baseline;
 }
 
 /* ------------------------------------------------------------------ */
@@ -262,7 +262,7 @@ input:-webkit-autofill:active {
 }
 
 .home-link-box-orange {
-  background-color: #FF5C00;
+  background-color: #ff5c00;
   padding: 30px;
   width: 33%;
   text-align: center;
@@ -333,23 +333,29 @@ input:-webkit-autofill:active {
 /* ExhibitionsPage and PreviousExhibitionsPage */
 
 .current-exhibition-container {
-  background-color: #929292 ;
+  background-color: #929292;
   padding: 20px;
   margin: 10px 0px;
 }
 
 .previous-exhibition-container {
-  background-color: #929292 ;
+  background-color: #929292;
   padding: 20px;
   margin: 10px 0px;
   width: fit-content;
 }
 
-.current-exhibition-container > h1, h2, h3, p {
+.current-exhibition-container > h1,
+h2,
+h3,
+p {
   margin: 0;
 }
 
-.previous-exhibition-container > h1, h2, h3, p {
+.previous-exhibition-container > h1,
+h2,
+h3,
+p {
   margin: 0;
 }
 
@@ -440,7 +446,6 @@ input:-webkit-autofill:active {
   border: 30px solid white;
   height: 80vh;
   margin-bottom: -6px;
-
 }
 
 /* ------------------------------------------------------------------ */
@@ -522,7 +527,7 @@ input:-webkit-autofill:active {
   font-weight: 700;
   text-decoration: none;
   inline-size: 250px;
-  overflow-wrap: break-all; 
+  overflow-wrap: break-all;
   margin-bottom: 15px;
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 
@@ -15,10 +15,10 @@ function EditExhibitionPage(props) {
   const [images, setImages] = useState([]);
   const [message, setMessage] = useState("");
 
-  const { exhibitionId } = useParams();  
+  const { exhibitionId } = useParams();
   const navigate = useNavigate();
 
-  // IMG File upload 
+  // IMG File upload
   const handleFileUpload = (e) => {
     const files = e.target.files;
 
@@ -51,7 +51,9 @@ function EditExhibitionPage(props) {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .get(`${API_URL}/exhibitions/${exhibitionId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+      .get(`${API_URL}/exhibitions/${exhibitionId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         // Reset the state
         const oneExhibition = response.data;
@@ -62,43 +64,56 @@ function EditExhibitionPage(props) {
         setSubtext1(oneExhibition.subtext1);
         setSubtext2(oneExhibition.subtext2);
         setSubtext3(oneExhibition.subtext3);
-        setImages(oneExhibition.images)
+        setImages(oneExhibition.images);
       })
       .catch((error) => console.log(error));
-    }, [exhibitionId]);
+  }, [exhibitionId]);
 
-    const handleFormSubmit = (e) => {
-      e.preventDefault();
-      // Create an object representing the body of the PUT request
-      const requestBody = { title, artist, description, runningTime, subtext1, subtext2, subtext3, images };
-      const storedToken = localStorage.getItem("authToken");
-   
-      // Make a PUT request to update the exhibition
-      axios
-      .put(`${API_URL}/exhibitions/${exhibitionId}/edit`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
-        .then((response) => {
-          // Once the request is resolved successfully and the exhibition
-          // is updated we navigate back to the exhibition details page
-          navigate(`/exhibitions/${exhibitionId}`)
-        });
-      }
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // Create an object representing the body of the PUT request
+    const requestBody = {
+      title,
+      artist,
+      description,
+      runningTime,
+      subtext1,
+      subtext2,
+      subtext3,
+      images,
+    };
+    const storedToken = localStorage.getItem("authToken");
+
+    // Make a PUT request to update the exhibition
+    axios
+      .put(`${API_URL}/exhibitions/${exhibitionId}/edit`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        // Once the request is resolved successfully and the exhibition
+        // is updated we navigate back to the exhibition details page
+        navigate(`/exhibitions/${exhibitionId}`);
+      });
+  };
 
   // Delete exhibition
 
   const deleteExhibition = () => {
-  // Make a DELETE request to delete the exhibition
-  const storedToken = localStorage.getItem("authToken");
+    // Make a DELETE request to delete the exhibition
+    const storedToken = localStorage.getItem("authToken");
 
-  axios
-  .delete(`${API_URL}/exhibitions/${exhibitionId}`, { headers: { Authorization: `Bearer ${storedToken}` } })
-    .then(() => {
-      // Once the delete request is resolved successfully
-      // navigate back to the list of projects.
-      navigate("/admin");
-    })
-    .catch((err) => console.log(err));
-};  
- 
+    axios
+      .delete(`${API_URL}/exhibitions/${exhibitionId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then(() => {
+        // Once the delete request is resolved successfully
+        // navigate back to the list of projects.
+        navigate("/admin");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="body-container">
       <div className="shop-add-container">
@@ -106,102 +121,127 @@ function EditExhibitionPage(props) {
         <h3>Edit Exhibition</h3>
         <br />
 
-          <form onSubmit={handleFormSubmit} encType="multipart/form-data">
+        <form onSubmit={handleFormSubmit} encType="multipart/form-data">
           <div className="form-outer-container">
-          <div className="form-container margin-right">
-              <label className="form-label">Title</label><br />
+            <div className="form-container margin-right">
+              <label className="form-label">Title</label>
+              <br />
               <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="form-input"
+                type="text"
+                name="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="form-input"
               />
-              <br /><br />
+              <br />
+              <br />
 
-              <label className="form-label">Artist name</label><br />
+              <label className="form-label">Artist name</label>
+              <br />
               <input
-              type="text"
-              name="artist"
-              value={artist}
-              onChange={(e) => setArtist(e.target.value)}
-              className="form-input"
+                type="text"
+                name="artist"
+                value={artist}
+                onChange={(e) => setArtist(e.target.value)}
+                className="form-input"
               />
-              <br /><br />
+              <br />
+              <br />
 
-              <label className="form-label">Description</label><br />
+              <label className="form-label">Description</label>
+              <br />
               <textarea
-              type="textarea"
-              style={{resize:"none"}}
-              name="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="form-input form-input-textarea"
+                type="textarea"
+                style={{ resize: "none" }}
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                className="form-input form-input-textarea"
               />
-              <br /><br />
+              <br />
+              <br />
 
-              <label className="form-label">Running Time</label><br />
+              <label className="form-label">Running Time</label>
+              <br />
               <input
-              type="text"
-              name="runningTime"
-              value={runningTime}
-              onChange={(e) => setRunningTime(e.target.value)}
-              className="form-input"
+                type="text"
+                name="runningTime"
+                value={runningTime}
+                onChange={(e) => setRunningTime(e.target.value)}
+                className="form-input"
               />
-              <br /><br />
+              <br />
+              <br />
 
-              <label className="form-label">Image</label><br />
+              <label className="form-label">Image</label>
+              <br />
               <input
-              type="file"
-              name="imageUrl"
-              multiple
-              onChange={(e) => handleFileUpload(e)}
+                type="file"
+                name="imageUrl"
+                multiple
+                onChange={(e) => handleFileUpload(e)}
               />
-              <br /><br />
+              <br />
+              <br />
               {message && <p>{message}</p>}
-              </div>
+            </div>
 
-              <div className="form-container">
-              <label className="form-label">Subtext 1</label><br />
+            <div className="form-container">
+              <label className="form-label">Subtext 1</label>
+              <br />
               <textarea
-              type="textarea"
-              style={{resize:"none"}}
-              name="subtext1"
-              value={subtext1}
-              onChange={(e) => setSubtext1(e.target.value)}
-              className="form-input form-input-textarea"
+                type="textarea"
+                style={{ resize: "none" }}
+                name="subtext1"
+                value={subtext1}
+                onChange={(e) => setSubtext1(e.target.value)}
+                className="form-input form-input-textarea"
               />
-              <br /><br />
+              <br />
+              <br />
 
-              <label className="form-label">Subtext 2</label><br />
+              <label className="form-label">Subtext 2</label>
+              <br />
               <textarea
-              type="textarea"
-              style={{resize:"none"}}
-              name="subtext2"
-              value={subtext2}
-              onChange={(e) => setSubtext2(e.target.value)}
-              className="form-input form-input-textarea"
+                type="textarea"
+                style={{ resize: "none" }}
+                name="subtext2"
+                value={subtext2}
+                onChange={(e) => setSubtext2(e.target.value)}
+                className="form-input form-input-textarea"
               />
-              <br /><br />
+              <br />
+              <br />
 
-              <label className="form-label">Subtext 3</label><br />
+              <label className="form-label">Subtext 3</label>
+              <br />
               <textarea
-              type="textarea"
-              style={{resize:"none"}}
-              name="subtext3"
-              value={subtext3}
-              onChange={(e) => setSubtext3(e.target.value)}
-              className="form-input form-input-textarea"
+                type="textarea"
+                style={{ resize: "none" }}
+                name="subtext3"
+                value={subtext3}
+                onChange={(e) => setSubtext3(e.target.value)}
+                className="form-input form-input-textarea"
               />
-              <br /><br />
-              </div>
+              <br />
+              <br />
+            </div>
           </div>
-          <button type="submit" className="form-button">Save</button><span className="text-xs">&nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;</span><button onClick={deleteExhibition} className="form-button">Delete</button>
-          </form>
-          <br /><br />
+          <button type="submit" className="form-button">
+            Save
+          </button>
+          <span className="text-xs">
+            &nbsp;&nbsp;&nbsp;OR&nbsp;&nbsp;&nbsp;
+          </span>
+          <button onClick={deleteExhibition} className="form-button">
+            Delete
+          </button>
+        </form>
+        <br />
+        <br />
       </div>
     </div>
   );
 }
- 
+
 export default EditExhibitionPage;

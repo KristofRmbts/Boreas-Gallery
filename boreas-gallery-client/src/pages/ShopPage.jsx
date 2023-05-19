@@ -7,16 +7,18 @@ const API_URL = import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005";
 
 function ShopPage() {
   const [items, setItems] = useState([]);
- 
+
   const getAllItems = () => {
     const storedToken = localStorage.getItem("authToken");
 
     axios
-      .get(`${API_URL}/shop`, { headers: { Authorization: `Bearer ${storedToken}` } })
-      .then((response) =>  setItems(response.data))
+      .get(`${API_URL}/shop`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => setItems(response.data))
       .catch((error) => console.log(error));
   };
- 
+
   // We set this effect will run only once, after the initial render
   // by setting the empty dependency array - []
   useEffect(() => {
@@ -27,20 +29,25 @@ function ShopPage() {
     return <div></div>;
   }
 
-    return (
-      <div className="body-container">
-        <h1>Shop</h1>
-        <p>Shop the latest goodies from Boreas, including recent exhibition<br />prints, merchandise and artist’s books.</p>
+  return (
+    <div className="body-container">
+      <h1>Shop</h1>
+      <p>
+        Shop the latest goodies from Boreas, including recent exhibition
         <br />
-        <br />
-        <div className="items-list-container">
+        prints, merchandise and artist’s books.
+      </p>
+      <br />
+      <br />
+      <div className="items-list-container">
         {items.map((item) => (
           <ItemCard key={item._id} {...item} />
         ))}
-        </div>  
-        <br /><br />
       </div>
-    );
-  }
-   
-  export default ShopPage;
+      <br />
+      <br />
+    </div>
+  );
+}
+
+export default ShopPage;
