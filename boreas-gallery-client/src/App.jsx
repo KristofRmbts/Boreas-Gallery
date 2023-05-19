@@ -51,21 +51,61 @@ function App() {
             path="/exhibitions/previous"
             element={<PreviousExhibitionsPage />}
           />
-          <Route path="/exhibitions/add" element={<AddExhibitionPage />} />
+          <Route
+            path="/exhibitions/add"
+            element={
+              <IsAdmin>
+                <AddExhibitionPage />
+              </IsAdmin>
+            }
+          />
           <Route
             path="/exhibitions/:exhibitionId/edit"
-            element={<EditExhibitionPage />}
+            element={
+              <IsAdmin>
+                <EditExhibitionPage />
+              </IsAdmin>
+            }
           />
 
           <Route path="/artists" element={<ArtistsPage />} />
           <Route path="/artists/:artistId" element={<ArtistDetailsPage />} />
-          <Route path="/artists/add" element={<AddArtistPage />} />
-          <Route path="/artists/:artistId/edit" element={<EditArtistPage />} />
+          <Route
+            path="/artists/add"
+            element={
+              <IsAdmin>
+                <AddArtistPage />
+              </IsAdmin>
+            }
+          />
+          <Route
+            path="/artists/:artistId/edit"
+            element={
+              <IsAdmin>
+                <EditArtistPage />
+              </IsAdmin>
+            }
+          />
 
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/shop/:itemId" element={<ItemDetailsPage />} />
-          <Route path="/shop/add" element={<AddItemPage />} />
-          <Route exact path="/shop/:itemId/edit" element={<EditItemPage />} />
+          <Route
+            path="/shop/add"
+            element={
+              <IsAdmin>
+                <AddItemPage />
+              </IsAdmin>
+            }
+          />
+          <Route
+            exact
+            path="/shop/:itemId/edit"
+            element={
+              <IsAdmin>
+                <EditItemPage />
+              </IsAdmin>
+            }
+          />
 
           <Route path="/about" element={<AboutPage />} />
           <Route path="/takepart" element={<TakePartPage />} />
