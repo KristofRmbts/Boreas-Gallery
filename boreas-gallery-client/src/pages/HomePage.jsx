@@ -32,18 +32,26 @@ function HomePage() {
   }
   return (
     <div className="body-container">
-      <div className="home-container">
-        <div className="home-inner-container home-margin" height={900}>
+      <div className="d-flex flex-wrap-reverse">
+        <div className="col-sm-12 col-md-6 col-lg-5" height={900}>
           <h1 className="exhibition-title-home">{exhibition.title}</h1>
           <br />
           <br />
           <p className="justify-text">{exhibition.description}</p>
-        </div>
-        <div className="home-inner-container">
-          <Link to={`/exhibitions/${exhibition._id}`}>
-            <img src={exhibition.images[0]} alt="" height={900} />
-          </Link>
           <br />
+          <br />
+          <br />
+          <br />
+        </div>
+        <div className="col-sm-12 col-md-6 col-lg-5 ms-auto">
+          <Link to={`/exhibitions/${exhibition._id}`}>
+            <img
+              src={exhibition.images[0]}
+              alt=""
+              height={900}
+              className="img-fluid"
+            />
+          </Link>
         </div>
       </div>
       <Link to={`/exhibitions/${exhibition._id}`} className="link-black">
@@ -52,8 +60,8 @@ function HomePage() {
         </p>
       </Link>
       <br />
-      <div className="home-container">
-        <div className="home-inner-container home-margin-s home-link-box-orange">
+      <div className="home-container d-flex flex-wrap">
+        <div className="col-sm-12 col-md-4 col-lg-4 home-link-box-orange">
           <Link to={`/shop`} className="link-normal">
             <img src={BB3} alt="Link img" className="home-link-box-img" />
             <br />
@@ -66,7 +74,7 @@ function HomePage() {
             </p>
           </Link>
         </div>
-        <div className="home-inner-container home-margin-s home-link-box-white">
+        <div className="col-sm-12 col-md-4 col-lg-4 home-link-box-white">
           <Link to={`exhibitions/previous`} className="link-normal">
             <img src={BB2} alt="Link img" className="home-link-box-img" />
             <br />
@@ -78,7 +86,7 @@ function HomePage() {
             </p>
           </Link>
         </div>
-        <div className="home-inner-container home-link-box-grey">
+        <div className="col-sm-12 col-md-4 col-lg-4 home-link-box-grey">
           <Link to={`/takepart`} className="link-normal">
             <img src={BB1} alt="Link img" className="home-link-box-img" />
             <br />

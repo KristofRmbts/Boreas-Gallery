@@ -153,8 +153,8 @@ function EditItemPage() {
         <h3>Edit Item</h3>
         <br />
         <form onSubmit={handleFormSubmit} encType="multipart/form-data">
-          <div className="form-outer-container">
-            <div className="form-container margin-right">
+          <div className="form-outer-container d-flex flex-wrap">
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <label className="form-label">Title</label>
               <br />
               <input
@@ -217,13 +217,13 @@ function EditItemPage() {
               <br />
             </div>
 
-            <div className="form-container">
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <label className="form-label">Size</label>
               <br />
               <select
                 name="size"
                 onChange={handleSizeChange}
-                className="form-select"
+                className="shop-form-select"
                 multiple
               >
                 <option value="8x12">8x12</option>
@@ -240,7 +240,7 @@ function EditItemPage() {
                 <select
                   name="material"
                   onChange={handleMaterialChange}
-                  className="form-select"
+                  className="shop-form-select"
                   multiple
                 >
                   <option value="professional paper">Professional paper</option>
@@ -254,7 +254,7 @@ function EditItemPage() {
                 <select
                   name="border"
                   onChange={handleBorderChange}
-                  className="form-select"
+                  className="shop-form-select"
                   multiple
                 >
                   <option value="No border">No border</option>

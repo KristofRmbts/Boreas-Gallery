@@ -29,10 +29,6 @@ function Header() {
           </Link>
         </div>
         <div className="links-container-right">
-          <Link to="/about" className="link-black link-margin">
-            {" "}
-            About us{" "}
-          </Link>
           <a
             href="https://www.instagram.com/boreasgallery/"
             target="_blank"

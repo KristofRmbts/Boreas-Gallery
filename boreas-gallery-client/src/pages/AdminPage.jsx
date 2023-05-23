@@ -59,8 +59,8 @@ function AdminPage() {
     <div className="body-container">
       <h1>Admin portal</h1>
       <br />
-      <div className="admin-container">
-        <div className="admin-inner-container border">
+      <div className="mx-auto">
+        <div className="col-sm-12 col-md-6 col-lg-6 border">
           <h2>Artists:</h2>
           <hr />
           <br />
@@ -90,7 +90,8 @@ function AdminPage() {
           <br />
           <br />
         </div>
-        <div className="admin-inner-container border">
+        <br />
+        <div className="col-sm-12 col-md-6 col-lg-6 border">
           <h2>Exhibitions:</h2>
           <hr />
           <br />
@@ -121,7 +122,8 @@ function AdminPage() {
           <br />
           <br />
         </div>
-        <div className="admin-inner-container border">
+        <br />
+        <div className="col-sm-12 col-md-6 col-lg-6 border">
           <h2>Shop:</h2>
           <hr />
           <br />
@@ -149,6 +151,8 @@ function AdminPage() {
           <br />
           <br />
         </div>
+        <br />
+        <br />
       </div>
     </div>
   );

@@ -2,8 +2,9 @@ function AboutPage() {
   return (
     <div className="body-container">
       <h1>About us</h1>
+      <br />
       <div className="home-container">
-        <div className="inner-container">
+        <div className="col-sm-12 col-md-8 col-lg-6">
           <p className="justify-text">
             Boreas Gallery is an online art gallery that provides a
             distinguished platform for amateur photographers to exhibit their
@@ -11,7 +12,6 @@ function AboutPage() {
             artists, enabling them to gain recognition and create potential
             pathways to future opportunities in the world of photography.
           </p>
-          <br />
           <br />
           <p className="justify-text">
             Step into a world of artistic vision as we present a curated
@@ -22,7 +22,6 @@ function AboutPage() {
             lens.
           </p>
           <br />
-          <br />
           <p className="justify-text">
             At Boreas Gallery, we are committed to supporting emerging talent
             without financial constraints. We stand apart by providing a
@@ -31,7 +30,6 @@ function AboutPage() {
             supports the artists, as we believe in the importance of nurturing
             their creativity and enabling them to pursue their passion.
           </p>
-          <br />
           <br />
           <p className="justify-text">
             Boreas Gallery is a welcoming and inclusive community that connects
@@ -42,6 +40,7 @@ function AboutPage() {
             boundless potential of amateur photographers and their contributions
             to the art world.
           </p>
+          <br />
         </div>
       </div>
     </div>

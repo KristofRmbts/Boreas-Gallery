@@ -120,11 +120,11 @@ function EditArtistPage() {
   return (
     <div className="body-container">
       <div className="shop-add-container">
-        <h3>Edit Item</h3>
+        <h3>Edit Artist</h3>
         <br />
         <form onSubmit={handleFormSubmit} encType="multipart/form-data">
-          <div className="form-outer-container">
-            <div className="form-container margin-right">
+          <div className="form-outer-container d-flex flex-wrap">
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <label className="form-label">First name</label>
               <br />
               <input
@@ -175,7 +175,7 @@ function EditArtistPage() {
               <br />
             </div>
 
-            <div className="form-container">
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <label className="form-label">Social media link 1</label>
               <br />
               <input

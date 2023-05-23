@@ -4,8 +4,9 @@ function TakePartPage() {
   return (
     <div className="body-container">
       <h1>Take part</h1>
+      <br />
       <div className="home-container">
-        <div className="inner-container">
+        <div className="col-sm-12 col-md-8 col-lg-6">
           <p className="justify-text">
             At Boreas Gallery, we are passionate about providing a platform for
             emerging photographers and artists to shine. We believe in the
@@ -14,7 +15,6 @@ function TakePartPage() {
             looking to gain exposure and share your unique vision with the
             world, we invite you to take part in our esteemed gallery.
           </p>
-          <br />
           <br />
           <p className="justify-text">
             We welcome submissions from talented photographers like you. By
@@ -26,7 +26,6 @@ function TakePartPage() {
             best creations.
           </p>
           <br />
-          <br />
           <p className="justify-text">
             Boreas Gallery is committed to providing a supportive space for all
             emerging photographers and artists. We believe in nurturing talent
@@ -36,7 +35,6 @@ function TakePartPage() {
             breadth of talent that exists within the amateur photography
             community, allowing your artistry to be discovered and appreciated.
           </p>
-          <br />
           <br />
           <p className="justify-text">
             To take part in this exciting opportunity, simply send an email and
@@ -49,7 +47,6 @@ function TakePartPage() {
             recognition and future opportunities.
           </p>
           <br />
-          <br />
           <a
             href="mailto:takepart@boreasgallery.com?subject=Take%20Part%20Request"
             className="link-normal"
@@ -59,7 +56,6 @@ function TakePartPage() {
               <img src={ArrowIcon} alt="arrow right" height={11} />
             </p>
           </a>
-          <br />
           <br />
         </div>
       </div>

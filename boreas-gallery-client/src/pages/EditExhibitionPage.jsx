@@ -122,8 +122,8 @@ function EditExhibitionPage(props) {
         <br />
 
         <form onSubmit={handleFormSubmit} encType="multipart/form-data">
-          <div className="form-outer-container">
-            <div className="form-container margin-right">
+          <div className="form-outer-container d-flex flex-wrap">
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <label className="form-label">Title</label>
               <br />
               <input
@@ -186,7 +186,7 @@ function EditExhibitionPage(props) {
               {message && <p>{message}</p>}
             </div>
 
-            <div className="form-container">
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <label className="form-label">Subtext 1</label>
               <br />
               <textarea

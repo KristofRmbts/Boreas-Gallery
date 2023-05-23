@@ -28,7 +28,6 @@
 
 .inner-container {
   text-align: start;
-  width: 50vw;
 }
 
 /* Font */
@@ -124,7 +123,7 @@
   text-align: center;
 }
 
-.form-select {
+.shop-form-select {
   width: 300px;
   height: fit-content;
   background-color: white;
@@ -264,13 +263,11 @@ input:-webkit-autofill:active {
 .home-link-box-orange {
   background-color: #ff5c00;
   padding: 30px;
-  width: 33%;
   text-align: center;
 }
 
 .home-link-box-white {
   padding: 30px;
-  width: 33%;
   text-align: center;
 }
 
@@ -278,7 +275,6 @@ input:-webkit-autofill:active {
   background-color: #929292;
   color: white;
   padding: 30px;
-  width: 33%;
   text-align: center;
 }
 
@@ -301,7 +297,7 @@ input:-webkit-autofill:active {
 
 /* Admin Portal */
 
-.admin-container {
+/* .admin-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -310,7 +306,7 @@ input:-webkit-autofill:active {
 .admin-inner-container {
   text-align: start;
   width: 33vw;
-}
+} */
 
 .border {
   border: 1px solid black;
@@ -444,19 +440,13 @@ p {
 
 .slideshow-zoom-img-passpartout {
   border: 30px solid white;
-  height: 80vh;
-  margin-bottom: -6px;
+  max-height: 70vh;
 }
 
 /* ------------------------------------------------------------------ */
 /* ------------------------------------------------------------------ */
 
 /* ArtistsPage */
-
-.artist-container {
-  display: flex;
-  flex: row;
-}
 
 .artist-inner-container {
   margin: 0px 15px 15px 0px;

@@ -103,6 +103,8 @@ function LoginPage(props) {
           <img src={ArrowIcon} alt="Arrow" height={10} className="icon" />
         </Link>
       </div>
+      <br />
+      <br />
     </div>
   );
 }

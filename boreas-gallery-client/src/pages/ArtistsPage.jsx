@@ -52,7 +52,7 @@ function ArtistsPage() {
   return (
     <div className="body-container">
       <h1>Artists</h1>
-      <div className="artist-container">
+      <div className="d-flex flex-wrap">
         {artists.map((artist) => (
           <div key={artist._id}>
             <div className="artist-inner-container">
@@ -61,8 +61,8 @@ function ArtistsPage() {
                   <img
                     src={artist.imageUrl}
                     alt="Artist image"
-                    width={250}
-                    className="artist-img"
+                    width={170}
+                    className="img-fluid"
                   />
                   <p className="artist-name">
                     {artist.firstName} {artist.lastName}

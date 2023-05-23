@@ -63,31 +63,13 @@ function ItemDetailsPage(props) {
   return (
     <div className="body-container">
       {item && (
-        <div className="item-container">
-          <div className="item-container-left">
-            <img
-              src={item.imageUrl}
-              alt="Item preview"
-              className="item-image"
-            />
+        <div className="item-container d-flex flex-wrap">
+          <div className="col-sm-12 col-md-6 col-lg-5">
+            <img src={item.imageUrl} alt="Item preview" className="img-fluid" />
             <br />
             <br />
-            <br />
-            <br />
-            <p className="text-s link-black">DELIVERY AND RETURNS</p>
-            <br />
-            <p className="text-s justify-text">
-              Orders are handled directly by the artist, and ship promptly after
-              printing. All domestic orders are insured and trackable.
-              International orders are insured and optionally trackable. No
-              returns as all prints are custom made.
-              <br />
-              <br />
-              An email containing tracking information will be sent once the
-              order ships.
-            </p>
           </div>
-          <div className="item-container-right">
+          <div className="col-sm-12 col-md-6 col-lg-5 ms-auto text-end">
             <h2 className="item-title">{item.title}</h2>
             <br />
             <p className="shop-item-info link-black">DETAILS</p>
@@ -99,12 +81,12 @@ function ItemDetailsPage(props) {
             <p className="shop-item-info">{item.quantity}</p>
             <p className="shop-item-info">Numbered and signed</p>
             <br />
-            <div className="form-container">
+            <div className="text-end">
               <label className="form-label">Size</label>
               <br />
               <select
                 name="size"
-                className="form-select"
+                className="shop-form-select"
                 onChange={handleSizeChange}
               >
                 {item.size.map((size) => (
@@ -120,7 +102,7 @@ function ItemDetailsPage(props) {
               <br />
               <select
                 name="material"
-                className="form-select"
+                className="shop-form-select"
                 onChange={handleMaterialChange}
               >
                 {item.material.map((material) => (
@@ -136,7 +118,7 @@ function ItemDetailsPage(props) {
               <br />
               <select
                 name="border"
-                className="form-select"
+                className="shop-form-select"
                 onChange={handleBorderChange}
               >
                 {item.border.map((border) => (
@@ -157,6 +139,22 @@ function ItemDetailsPage(props) {
           </div>
         </div>
       )}
+      <br />
+      <br />
+      <div className="col-sm-12 col-md-6 col-lg-4">
+        <p className="text-s link-black">DELIVERY AND RETURNS</p>
+        <br />
+        <p className="text-s justify-text">
+          Orders are handled directly by the artist, and ship promptly after
+          printing. All domestic orders are insured and trackable. International
+          orders are insured and optionally trackable. No returns as all prints
+          are custom made.
+          <br />
+          <br />
+          An email containing tracking information will be sent once the order
+          ships.
+        </p>
+      </div>
       <br />
       <br />
     </div>

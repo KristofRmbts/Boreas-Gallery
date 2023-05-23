@@ -29,6 +29,9 @@ function PreviousExhibitionsPage() {
   return (
     <div className="body-container">
       <div className="page-height-container">
+      <div className="text-center">
+        {exhibitions? <p><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>There are currently no previous exhibitions.</p> : <p></p>}
+      </div>
         {exhibitions.map((exhibition) => (
           <div key={exhibition._id}>
             <div className="current-exhibition-container">

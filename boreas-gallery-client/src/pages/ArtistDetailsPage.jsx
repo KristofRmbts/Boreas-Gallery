@@ -35,11 +35,10 @@ function ArtistDetailsPage() {
 
   return (
     <div className="body-container">
-      <h1>Artist</h1>
       {artist && (
         <div>
-          <div className="admin-container">
-            <div className="admin-inner-container">
+          <div className="admin-container d-flex flex-wrap-reverse">
+            <div className="col-sm-12 col-md-6 col-lg-8">
               <h3 className="font-N27">About</h3>
               <br />
               <p className="justify-text">{artist.description}</p>
@@ -50,7 +49,7 @@ function ArtistDetailsPage() {
               <br />
               <p className="justify-text"></p>
             </div>
-            <div className="admin-inner-container">
+            <div className="col-sm-12 col-md-6 col-lg-4">
               <img src={artist.imageUrl} alt="Artist image" width={300} />
               <br />
               <br />
