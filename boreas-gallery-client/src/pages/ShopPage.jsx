@@ -32,10 +32,9 @@ function ShopPage() {
   return (
     <div className="body-container">
       <h1>Shop</h1>
-      <p>
-        Shop the latest goodies from Boreas, including recent exhibition
-        <br />
-        prints, merchandise and artist’s books.
+      <p className="col-sm-9 col-md-4 col-lg-4">
+        Shop the latest goodies from Boreas, including recent exhibition prints,
+        merchandise and artist’s books.
       </p>
       <br />
       <br />
